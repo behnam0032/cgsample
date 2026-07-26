@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Architect Desktop | Artakan</title>
+<meta name="description" content="Artakan Architect Desktop — calculation utilities for architects: perimeter, façade, glazing and floor area.">
+<link rel="stylesheet" href="/assets/style.css">
+</head>
+<body>
+
+<header class="titleblock">
+  <div class="wrap tb-row">
+    <div class="tb-brand">
+      <svg class="tb-mark" viewBox="0 0 40 40" fill="none">
+        <rect x="1" y="1" width="38" height="38" stroke="#5fd4e0" stroke-width="1.4"/>
+        <path d="M7 30h6v-6h6v-6h6v-6h6" stroke="#c17845" stroke-width="2.4" stroke-linecap="square"/>
+      </svg>
+      <div class="tb-name">Artakan<span>ARTAKAN CO. — 3DS MAX PLUGINS</span></div>
+    </div>
+    <nav class="tb-nav">
+      <a href="/">Home</a>
+      <a href="/plugin/artakan-create-stairs">Create Stairs</a>
+      <a href="/plugin/artakan-planto3d">PlanTo3D</a>
+      <a href="/plugin/artakan-architect-desktop" class="active">Architect Desktop</a>
+      <a href="/about">About</a>
+      <a href="mailto:info@cgsample.ir" class="tb-cta">Email us</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow">// PLUGIN 03 · v2.00 · MAXSCRIPT</span>
+      <h1>Architect <em>Desktop</em></h1>
+      <p class="lead">A toolkit of measurement and calculation utilities for architects working in 3ds Max. Get perimeter, façade, glazing and floor-area figures straight from your model — no manual takeoffs, no separate spreadsheet.</p>
+      <div class="hero-actions">
+        <a href="mailto:info@cgsample.ir?subject=Buy Architect Desktop plugin" class="btn btn-primary">Buy — email us</a>
+        <a href="https://www.scriptspot.com/3ds-max/scripts/artakan-architect-desktop" class="btn btn-ghost">ScriptSpot page</a>
+      </div>
+    </div>
+
+    <div class="blueprint-card">
+      <span class="tag">FIG. 03 — AREA TAKEOFF</span>
+      <svg class="stair-draw" viewBox="0 0 420 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="60" y="70" width="240" height="160" stroke="#5fd4e0" stroke-width="2"/>
+        <line x1="60" y1="150" x2="300" y2="150" stroke="#294455" stroke-width="1"/>
+        <line x1="180" y1="70" x2="180" y2="230" stroke="#294455" stroke-width="1"/>
+        <rect x="100" y="100" width="50" height="30" stroke="#c17845" stroke-width="1.6"/>
+        <rect x="220" y="170" width="50" height="30" stroke="#c17845" stroke-width="1.6"/>
+        <line x1="60" y1="248" x2="300" y2="248" stroke="#5fd4e0" stroke-width="1"/>
+        <line x1="60" y1="242" x2="60" y2="254" stroke="#5fd4e0" stroke-width="1"/>
+        <line x1="300" y1="242" x2="300" y2="254" stroke="#5fd4e0" stroke-width="1"/>
+        <text class="dim-text" x="128" y="264" fill="#5fd4e0" font-family="JetBrains Mono, monospace" font-size="11">PERIMETER 48.2m</text>
+        <text class="dim-text" x="220" y="95" fill="#e0955f" font-family="JetBrains Mono, monospace" font-size="11">GLAZING 12.6m²</text>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="dim"><span class="dim-label">SPECIFICATIONS</span></div>
+    <div class="section-head">
+      <h2>What it calculates</h2>
+      <p>Architect Desktop reads geometry directly from your scene, so figures update as the design changes.</p>
+    </div>
+    <div class="feature-list">
+      <div class="feature">
+        <span class="idx">01</span>
+        <div><h4>Room perimeter</h4><p>Select a room or hall and get its perimeter instantly, for skirting and finishing takeoffs.</p></div>
+      </div>
+      <div class="feature">
+        <span class="idx">02</span>
+        <div><h4>Façade area</h4><p>Measure the area of a façade, including openings, straight from the model.</p></div>
+      </div>
+      <div class="feature">
+        <span class="idx">03</span>
+        <div><h4>Glazing area</h4><p>Total glass area across selected windows, useful for energy and cost estimates.</p></div>
+      </div>
+      <div class="feature">
+        <span class="idx">04</span>
+        <div><h4>Floor area</h4><p>Net floor area per room or across the whole plan, for client-facing area schedules.</p></div>
+      </div>
+      <div class="feature">
+        <span class="idx">05</span>
+        <div><h4>Export-ready figures</h4><p>Results are formatted for quick copy into reports or client proposals.</p></div>
+      </div>
+      <div class="feature">
+        <span class="idx">06</span>
+        <div><h4>Built for offices</h4><p>Made to speed up the quantity takeoffs architects do on every project.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="dim"><span class="dim-label">TUTORIALS</span></div>
+    <div class="section-head">
+      <h2>See it in use</h2>
+      <p>Our own walkthrough of Architect Desktop, straight from the plugin's page.</p>
+    </div>
+    <div class="grid-2">
+      <a class="video-card" href="https://www.youtube.com/watch?v=cWl-rxpzDn8" target="_blank" rel="noopener">
+        <div class="video-thumb">
+          <img src="https://img.youtube.com/vi/cWl-rxpzDn8/hqdefault.jpg" alt="Thumbnail for the official Architect Desktop tutorial" loading="lazy">
+          <div class="video-play"><svg viewBox="0 0 68 48"><path d="M66.5 7.7c-.8-2.9-2.5-5.1-5.4-5.9C55.8 0 34 0 34 0S12.2 0 6.9 1.8C4 2.6 2.3 4.8 1.5 7.7 0 13 0 24 0 24s0 11 1.5 16.3c.8 2.9 2.5 5.1 5.4 5.9C12.2 48 34 48 34 48s21.8 0 27.1-1.8c2.9-.8 4.6-3 5.4-5.9C68 35 68 24 68 24s0-11-1.5-16.3z" fill="#c17845"/><path d="M45 24 27 14v20z" fill="#fff"/></svg></div>
+        </div>
+        <div class="video-body">
+          <h4>Artakan Architect Desktop — overview &amp; walkthrough</h4>
+          <div class="video-meta"><span class="src">OFFICIAL — CGSAMPLE</span><span class="watch">Watch ↗</span></div>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="cta-band">
+      <div>
+        <h3>Want to get Architect Desktop?</h3>
+        <p>The online store is temporarily unavailable. For purchase, pricing or version compatibility, just email us.</p>
+      </div>
+      <a href="mailto:info@cgsample.ir?subject=Buy Architect Desktop plugin" class="btn btn-primary">info@cgsample.ir</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot-row">
+    <span class="mono">ARTAKAN CO. — SHEET 04/05 — ARCHITECT DESKTOP v2</span>
+    <div class="foot-links">
+      <a href="/">Home</a>
+      <a href="/about">About</a>
+      <a href="mailto:info@cgsample.ir">info@cgsample.ir</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
