@@ -1,99 +1,109 @@
 <!DOCTYPE html>
-<html lang="en">
-<div class="artakan-landing" dir="ltr">
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Create Stairs | Artakan</title>
+<meta name="description" content="Create Stairs — a parametric stair and railing plugin for 3ds Max. Email us to buy.">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
 
-  <style>
-    .artakan-landing {
-      font-family: 'Segoe UI', Roboto, Arial, sans-serif;
-      color:#0f1115;
-      background:#f5f8fa;
-      padding:40px 20px;
-    }
-    .artakan-landing a { color:#1c5cff; text-decoration:none; }
-    .artakan-landing a:hover { text-decoration:underline; }
-    .artakan-landing h1, .artakan-landing h2, .artakan-landing h3 { color:#0d1117; margin-bottom:12px; }
-    .artakan-landing .container { max-width:1100px; margin:0 auto; }
-    .artakan-landing .hero {
-      display:grid; grid-template-columns:1fr 1fr; gap:30px; align-items:center; margin-bottom:60px;
-    }
-    .artakan-landing .hero img {
-      width:100%; border-radius:16px; border:1px solid #d1d9e0; box-shadow:0 4px 20px rgba(0,0,0,.05);
-    }
-    .artakan-landing .lead { font-size:18px; opacity:.9; margin-bottom:20px; }
-    .artakan-landing .price { font-size:20px; font-weight:600; margin-top:8px; }
-    .artakan-landing .price del { color:#888; margin-right:8px; font-size:18px; }
-    .artakan-landing .price span { color:#000000; font-size:22px; }
-    .artakan-landing .btns { display:flex; gap:12px; flex-wrap:wrap; margin-top:20px; }
-    .artakan-landing .btn {
-      display:inline-block; padding:12px 20px; border-radius:10px;
-      border:1px solid #1c5cff; background:#1c5cff; color:#fff; font-weight:600;
-      box-shadow:0 2px 8px rgba(28,92,255,.3);
-    }
-    .artakan-landing .btn.ghost { background:transparent; color:#1c5cff; box-shadow:none; }
-    .payment-icons {
-      margin-top:16px; display:flex; gap:14px; align-items:center;
-    }
-    .payment-icons img {
-      height:32px; width:auto; opacity:0.9;
-    }
-    .grid { display:grid; gap:20px; margin-top:30px; }
-    .grid.cols-3 { grid-template-columns:repeat(3,1fr); }
-    .feature {
-      background:#fff; border:1px solid #d8e0e6; border-radius:14px; padding:18px;
-      box-shadow:0 2px 10px rgba(0,0,0,.04);
-    }
-    .compare table { width:100%; border-collapse:collapse; color:#0f1115; }
-    .compare th, .compare td {
-      border:1px solid #d8e0e6; padding:10px; text-align:center;
-    }
-    .card {
-      background:#fff; border:1px solid #d8e0e6; border-radius:14px; padding:20px;
-      box-shadow:0 2px 10px rgba(0,0,0,.05);
-    }
-    .section { margin:60px 0; }
-    .muted { opacity:.8; }
-    .img { width:100%; border-radius:14px; border:1px solid #d8e0e6; }
-    @media (max-width:900px){
-      .artakan-landing .hero { grid-template-columns:1fr; }
-      .grid.cols-3 { grid-template-columns:1fr; }
-    }
-  </style>
-
-  <div class="container">
-
-    <section class="hero">
-      <div>
-        <img src="https://cgsample.com/image/plugin/create-stairs-pack.png" alt="Artakan Create Stairs UI and sample results">
-      </div>
-      <div>
-        <h1>Artakan Create Stairs — Build 3D staircases in just a few clicks</h1>
-        <p class="lead">Go from 2D plans to rich 3D models. Fully parametric, render-ready, compatible with <strong>3ds Max 2009+</strong>.</p>
-        <div class="price"><span>$29.99</span></div>
-
-        <div class="btns">
-          <a class="btn" href="https://cgsample.com/buy/No-1">Buy Now</a>
-          <a class="btn ghost" href="#videos">Watch Videos</a>
-        </div>
-
-        <!-- Added payment icons -->
-        <div class="payment-icons">
-          <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/paypal.svg" alt="PayPal">
-          <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/tether.svg" alt="Tether (USDT)">
-        </div>
-
-        <p style="font-size:13px;opacity:.7;margin-top:12px;">30-day, 100% money-back guarantee</p>
-      </div>
-    </section>
-
-    <section class="grid cols-3">
-      <div class="feature"><h3>Lightning-fast</h3><p class="muted">From 2D to 3D in under a minute—three clicks and done.</p></div>
-      <div class="feature"><h3>Fully Parametric</h3><p class="muted">Edit riser, tread depth, landings, handrails, and more anytime.</p></div>
-      <div class="feature"><h3>Render-ready</h3><p class="muted">Built-in Material IDs for quick texturing and rendering.</p></div>
-      <div class="feature"><h3>Three Stair Types</h3><p class="muted">Open, Closed, and Box stairs—cover all design needs.</p></div>
-      <div class="feature"><h3>Complex Projects</h3><p class="muted">Multiple landings, curved or broken paths, flexible rails.</p></div>
-      <div class="feature"><h3>Wide Compatibility</h3><p class="muted">Works on 3ds Max 2009 and above (Normal & Design).</p></div>
-    </section>
-
+<header class="titleblock">
+  <div class="wrap tb-row">
+    <div class="tb-brand">
+      <svg class="tb-mark" viewBox="0 0 40 40" fill="none">
+        <rect x="1" y="1" width="38" height="38" stroke="#5fd4e0" stroke-width="1.4"/>
+        <path d="M7 30h6v-6h6v-6h6v-6h6" stroke="#c17845" stroke-width="2.4" stroke-linecap="square"/>
+      </svg>
+      <div class="tb-name">Artakan<span>ARTAKAN CO. — 3DS MAX PLUGINS</span></div>
+    </div>
+    <nav class="tb-nav">
+      <a href="index.html">Home</a>
+      <a href="create-stairs.html" class="active">Create Stairs</a>
+      <a href="planto3d.html">PlanTo3D</a>
+      <a href="architect-desktop.html">Architect Desktop</a>
+      <a href="about.html">About</a>
+      <a href="mailto:info@cgsample.ir" class="tb-cta">Email us</a>
+    </nav>
   </div>
-</div>
+</header>
+
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow">// PLUGIN 01 · v3.00 · MAXSCRIPT</span>
+      <h1>Create <em>Stairs</em></h1>
+      <p class="lead">A fully parametric stair, railing and handrail system for 3ds Max. Set your parameters once, then just draw the run of the staircase — the plugin builds the rest.</p>
+      <div class="hero-actions">
+        <a href="mailto:info@cgsample.ir?subject=Buy Create Stairs plugin" class="btn btn-primary">Buy — email us</a>
+        <a href="https://www.scriptspot.com/3ds-max/scripts/create-stairs" class="btn btn-ghost">ScriptSpot page</a>
+      </div>
+    </div>
+    <div class="shot">
+      <img src="assets/create-stairs-box.png" alt="Create Stairs plugin case artwork, showing a rendered wooden staircase with metal railing">
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="dim"><span class="dim-label">SPECIFICATIONS</span></div>
+    <div class="section-head">
+      <h2>What it builds</h2>
+      <p>Instead of separate stair and railing objects, the plugin generates one parametric system where every part stays editable.</p>
+    </div>
+    <div class="feature-list">
+      <div class="feature">
+        <span class="idx">01</span>
+        <div><h4>Parametric stairs</h4><p>Set rise, tread depth, width and type (straight, turned, double entry) with a few simple spinners.</p></div>
+      </div>
+      <div class="feature">
+        <span class="idx">02</span>
+        <div><h4>Railing &amp; handrail</h4><p>A metal railing with vertical balusters and a wooden handrail is generated automatically along the stair path.</p></div>
+      </div>
+      <div class="feature">
+        <span class="idx">03</span>
+        <div><h4>Material control</h4><p>Separate material slots for treads, railing and handrail — works with V-Ray and Corona.</p></div>
+      </div>
+      <div class="feature">
+        <span class="idx">04</span>
+        <div><h4>Live editing</h4><p>Change the stair's length or angle at any time without losing materials or previous settings.</p></div>
+      </div>
+      <div class="feature">
+        <span class="idx">05</span>
+        <div><h4>Lightweight output</h4><p>Optimized mesh with a low poly count, suited to heavy architectural scenes.</p></div>
+      </div>
+      <div class="feature">
+        <span class="idx">06</span>
+        <div><h4>Version compatibility</h4><p>Tested on common 3ds Max versions; email us before purchase to confirm your version.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="cta-band">
+      <div>
+        <h3>Want to get Create Stairs?</h3>
+        <p>The online store is temporarily unavailable. For purchase, pricing or version compatibility, just email us.</p>
+      </div>
+      <a href="mailto:info@cgsample.ir?subject=Buy Create Stairs plugin" class="btn btn-primary">info@cgsample.ir</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot-row">
+    <span class="mono">ARTAKAN CO. — SHEET 02/05 — CREATE STAIRS v3</span>
+    <div class="foot-links">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="mailto:info@cgsample.ir">info@cgsample.ir</a>
+    </div>
+  </div>
+</footer>
+
+</body>
 </html>
