@@ -1,164 +1,2177 @@
+html
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Create Stairs | Artakan</title>
-<meta name="description" content="Create Stairs — a parametric stair and railing plugin for 3ds Max. Email us to buy.">
-<link rel="icon" href="../assets/favicon.ico" sizes="any">
-<link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32.png">
-<link rel="apple-touch-icon" sizes="180x180" href="../assets/favicon-180.png">
-<link rel="stylesheet" href="../assets/style.css">
+
+  <!-- =========================================================
+       BASIC
+  ========================================================== -->
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>
+    Artakan Create Stairs — 3ds Max Stair & Railing Plugin | CGSample
+  </title>
+
+  <meta
+    name="description"
+    content="Artakan Create Stairs is a parametric stair, railing and handrail plugin for Autodesk 3ds Max. Create and edit architectural staircases with adjustable rise, tread, width, railing and materials."
+  >
+
+  <meta
+    name="robots"
+    content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+  >
+
+  <meta
+    name="author"
+    content="CGSample"
+  >
+
+  <meta
+    name="theme-color"
+    content="#080d12"
+  >
+
+  <link
+    rel="canonical"
+    href="https://cgsample.ir/plugin/artakan-create-stairs"
+  >
+
+
+  <!-- =========================================================
+       FAVICON
+  ========================================================== -->
+
+  <link
+    rel="icon"
+    href="../assets/favicon.ico"
+    sizes="any"
+  >
+
+  <link
+    rel="icon"
+    type="image/png"
+    sizes="32x32"
+    href="../assets/favicon-32.png"
+  >
+
+  <link
+    rel="apple-touch-icon"
+    sizes="180x180"
+    href="../assets/favicon-180.png"
+  >
+
+
+  <!-- =========================================================
+       OPEN GRAPH
+  ========================================================== -->
+
+  <meta
+    property="og:type"
+    content="website"
+  >
+
+  <meta
+    property="og:title"
+    content="Artakan Create Stairs — 3ds Max Stair & Railing Plugin"
+  >
+
+  <meta
+    property="og:description"
+    content="A parametric staircase plugin for Autodesk 3ds Max with adjustable stairs, railings, handrails and materials."
+  >
+
+  <meta
+    property="og:url"
+    content="https://cgsample.ir/plugin/artakan-create-stairs"
+  >
+
+  <meta
+    property="og:site_name"
+    content="CGSample"
+  >
+
+  <meta
+    property="og:locale"
+    content="en_US"
+  >
+
+  <meta
+    property="og:image"
+    content="https://cgsample.ir/assets/create-stairs-box.png"
+  >
+
+  <meta
+    property="og:image:alt"
+    content="Artakan Create Stairs plugin for Autodesk 3ds Max"
+  >
+
+
+  <!-- =========================================================
+       X / TWITTER
+  ========================================================== -->
+
+  <meta
+    name="twitter:card"
+    content="summary_large_image"
+  >
+
+  <meta
+    name="twitter:title"
+    content="Artakan Create Stairs — 3ds Max Stair Plugin"
+  >
+
+  <meta
+    name="twitter:description"
+    content="Create parametric stairs, railings and handrails directly inside Autodesk 3ds Max."
+  >
+
+  <meta
+    name="twitter:image"
+    content="https://cgsample.ir/assets/create-stairs-box.png"
+  >
+
+
+  <!-- =========================================================
+       FONTS
+  ========================================================== -->
+
+  <link
+    rel="preconnect"
+    href="https://fonts.googleapis.com"
+  >
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  >
+
+
+  <!-- =========================================================
+       STYLES
+  ========================================================== -->
+
+  <style>
+
+    :root {
+      --bg: #080d12;
+      --bg-soft: #0d141b;
+      --card: #101a22;
+      --border: #20303c;
+      --text: #e8f0f3;
+      --muted: #8b9ca5;
+      --cyan: #5fd4e0;
+      --orange: #c17845;
+      --orange-light: #e0955f;
+      --green: #72d8a0;
+      --max-width: 1180px;
+    }
+
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: "JetBrains Mono", monospace;
+      line-height: 1.7;
+    }
+
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+
+    .wrap {
+      width: min(100% - 40px, var(--max-width));
+      margin-inline: auto;
+    }
+
+
+    /* =========================================================
+       HEADER
+    ========================================================== */
+
+    .titleblock {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 1px solid var(--border);
+      background: rgba(8, 13, 18, .94);
+      backdrop-filter: blur(12px);
+    }
+
+
+    .tb-row {
+      min-height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 30px;
+    }
+
+
+    .tb-brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 0;
+    }
+
+
+    .tb-mark {
+      width: 40px;
+      height: 40px;
+      flex: 0 0 auto;
+    }
+
+
+    .tb-name {
+      font-size: 17px;
+      font-weight: 700;
+      letter-spacing: -1px;
+      white-space: nowrap;
+    }
+
+
+    .tb-name > span {
+      display: block;
+      color: var(--muted);
+      font-size: 8px;
+      font-weight: 400;
+      letter-spacing: 1.1px;
+      margin-top: 2px;
+    }
+
+
+    .tb-nav {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+    }
+
+
+    .tb-nav a {
+      color: var(--muted);
+      font-size: 11px;
+      transition: color .2s ease;
+    }
+
+
+    .tb-nav a:hover,
+    .tb-nav a.active {
+      color: var(--cyan);
+    }
+
+
+    .tb-nav .tb-cta {
+      color: var(--cyan);
+      border: 1px solid var(--cyan);
+      padding: 8px 13px;
+    }
+
+
+    .tb-nav .tb-cta:hover {
+      background: var(--cyan);
+      color: #071014;
+    }
+
+
+    /* =========================================================
+       BREADCRUMB
+    ========================================================== */
+
+    .breadcrumb {
+      padding-top: 28px;
+      font-size: 10px;
+      color: var(--muted);
+    }
+
+
+    .breadcrumb a {
+      color: var(--cyan);
+    }
+
+
+    .breadcrumb span {
+      margin: 0 8px;
+      color: #455963;
+    }
+
+
+    /* =========================================================
+       HERO
+    ========================================================== */
+
+    .hero {
+      padding: 70px 0 85px;
+      border-bottom: 1px solid var(--border);
+    }
+
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.05fr .95fr;
+      gap: 70px;
+      align-items: center;
+    }
+
+
+    .eyebrow {
+      display: inline-block;
+      color: var(--cyan);
+      font-size: 10px;
+      letter-spacing: 1.5px;
+      margin-bottom: 20px;
+    }
+
+
+    h1 {
+      max-width: 760px;
+      font-size: clamp(46px, 7vw, 82px);
+      line-height: 1;
+      letter-spacing: -4px;
+      margin-bottom: 28px;
+    }
+
+
+    h1 em {
+      color: var(--cyan);
+      font-style: normal;
+    }
+
+
+    .lead {
+      max-width: 700px;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 2;
+    }
+
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 34px;
+    }
+
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 46px;
+      padding: 0 20px;
+      font-size: 11px;
+      border: 1px solid var(--border);
+      transition: all .2s ease;
+    }
+
+
+    .btn-primary {
+      background: var(--cyan);
+      color: #071014;
+      border-color: var(--cyan);
+    }
+
+
+    .btn-primary:hover {
+      background: transparent;
+      color: var(--cyan);
+    }
+
+
+    .btn-ghost {
+      color: var(--muted);
+    }
+
+
+    .btn-ghost:hover {
+      color: var(--cyan);
+      border-color: var(--cyan);
+    }
+
+
+    .shot {
+      position: relative;
+      border: 1px solid var(--border);
+      background: var(--bg-soft);
+      padding: 18px;
+    }
+
+
+    .shot::before {
+      content: "PRODUCT / 01";
+      position: absolute;
+      top: 12px;
+      left: 14px;
+      z-index: 2;
+      color: var(--cyan);
+      font-size: 9px;
+      letter-spacing: 1.2px;
+    }
+
+
+    .shot img {
+      width: 100%;
+      height: auto;
+      border: 1px solid var(--border);
+    }
+
+
+    /* =========================================================
+       SECTIONS
+    ========================================================== */
+
+    section {
+      padding: 85px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+
+    .dim {
+      border-top: 1px solid var(--border);
+      position: relative;
+      margin-bottom: 42px;
+    }
+
+
+    .dim-label {
+      position: relative;
+      top: -10px;
+      background: var(--bg);
+      padding-right: 14px;
+      color: var(--cyan);
+      font-size: 9px;
+      letter-spacing: 1.5px;
+    }
+
+
+    .section-head {
+      max-width: 780px;
+      margin-bottom: 42px;
+    }
+
+
+    .section-head h2 {
+      font-size: clamp(28px, 4vw, 48px);
+      line-height: 1.15;
+      letter-spacing: -2px;
+      margin-bottom: 18px;
+    }
+
+
+    .section-head p {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 2;
+    }
+
+
+    /* =========================================================
+       FEATURES
+    ========================================================== */
+
+    .feature-list {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+    }
+
+
+    .feature {
+      display: grid;
+      grid-template-columns: 50px 1fr;
+      gap: 15px;
+      padding: 28px;
+      background: var(--card);
+    }
+
+
+    .idx {
+      color: var(--orange);
+      font-size: 11px;
+    }
+
+
+    .feature h3,
+    .feature h4 {
+      font-size: 17px;
+      line-height: 1.4;
+      margin-bottom: 10px;
+    }
+
+
+    .feature p {
+      color: var(--muted);
+      font-size: 11px;
+      line-height: 2;
+    }
+
+
+    /* =========================================================
+       BLUEPRINT
+    ========================================================== */
+
+    .blueprint {
+      border: 1px solid var(--border);
+      background:
+        linear-gradient(
+          rgba(95, 212, 224, .025) 1px,
+          transparent 1px
+        ),
+        linear-gradient(
+          90deg,
+          rgba(95, 212, 224, .025) 1px,
+          transparent 1px
+        ),
+        var(--bg-soft);
+      background-size: 30px 30px;
+      padding: 28px;
+    }
+
+
+    .blueprint-tag {
+      color: var(--cyan);
+      font-size: 9px;
+      letter-spacing: 1.4px;
+    }
+
+
+    .stair-draw {
+      width: 100%;
+      height: auto;
+      margin-top: 12px;
+    }
+
+
+    /* =========================================================
+       VIDEOS
+    ========================================================== */
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+    }
+
+
+    .video-card {
+      display: block;
+      border: 1px solid var(--border);
+      background: var(--card);
+      transition:
+        border-color .2s ease,
+        transform .2s ease;
+    }
+
+
+    .video-card:hover {
+      border-color: var(--cyan);
+      transform: translateY(-2px);
+    }
+
+
+    .video-thumb {
+      position: relative;
+      overflow: hidden;
+      aspect-ratio: 16 / 9;
+      background: #060a0e;
+    }
+
+
+    .video-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+
+    .video-play {
+      position: absolute;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      background: rgba(0, 0, 0, .18);
+    }
+
+
+    .video-play svg {
+      width: 68px;
+      height: 48px;
+      filter: drop-shadow(0 5px 15px rgba(0,0,0,.35));
+    }
+
+
+    .video-body {
+      padding: 20px;
+    }
+
+
+    .video-body h3,
+    .video-body h4 {
+      font-size: 13px;
+      line-height: 1.6;
+      margin-bottom: 15px;
+    }
+
+
+    .video-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 15px;
+    }
+
+
+    .src {
+      color: var(--orange);
+      font-size: 9px;
+      letter-spacing: .8px;
+    }
+
+
+    .watch {
+      color: var(--cyan);
+      font-size: 9px;
+    }
+
+
+    /* =========================================================
+       CTA
+    ========================================================== */
+
+    .cta-band {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 35px;
+      border: 1px solid var(--border);
+      padding: 34px;
+      background: var(--bg-soft);
+    }
+
+
+    .cta-band h2,
+    .cta-band h3 {
+      font-size: 22px;
+      margin-bottom: 8px;
+    }
+
+
+    .cta-band p {
+      max-width: 680px;
+      color: var(--muted);
+      font-size: 11px;
+      line-height: 1.9;
+    }
+
+
+    /* =========================================================
+       FAQ
+    ========================================================== */
+
+    .faq {
+      max-width: 900px;
+    }
+
+
+    details {
+      border-top: 1px solid var(--border);
+      padding: 22px 0;
+    }
+
+
+    details:last-child {
+      border-bottom: 1px solid var(--border);
+    }
+
+
+    summary {
+      cursor: pointer;
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+
+    details p {
+      color: var(--muted);
+      font-size: 11px;
+      line-height: 2;
+      padding-top: 14px;
+      max-width: 800px;
+    }
+
+
+    /* =========================================================
+       FOOTER
+    ========================================================== */
+
+    footer {
+      padding: 40px 0 28px;
+    }
+
+
+    .foot-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 25px;
+    }
+
+
+    .mono {
+      color: #64747c;
+      font-size: 9px;
+      letter-spacing: .8px;
+    }
+
+
+    .foot-links {
+      display: flex;
+      gap: 20px;
+    }
+
+
+    .foot-links a {
+      color: var(--muted);
+      font-size: 10px;
+    }
+
+
+    .foot-links a:hover {
+      color: var(--cyan);
+    }
+
+
+    /* =========================================================
+       RESPONSIVE
+    ========================================================== */
+
+    @media (max-width: 900px) {
+
+      .tb-row {
+        min-height: 68px;
+      }
+
+      .tb-nav {
+        gap: 14px;
+      }
+
+      .hero-grid {
+        grid-template-columns: 1fr;
+        gap: 45px;
+      }
+
+      .feature-list {
+        grid-template-columns: 1fr;
+      }
+
+      .grid-2 {
+        grid-template-columns: 1fr;
+      }
+
+    }
+
+
+    @media (max-width: 650px) {
+
+      .wrap {
+        width: min(100% - 28px, var(--max-width));
+      }
+
+      .tb-row {
+        align-items: flex-start;
+        padding: 15px 0;
+      }
+
+      .tb-nav {
+        display: none;
+      }
+
+      .tb-name {
+        font-size: 15px;
+      }
+
+      .tb-name > span {
+        font-size: 7px;
+      }
+
+      .hero {
+        padding: 55px 0 65px;
+      }
+
+      h1 {
+        font-size: 46px;
+        letter-spacing: -2.5px;
+      }
+
+      section {
+        padding: 65px 0;
+      }
+
+      .feature {
+        grid-template-columns: 35px 1fr;
+        padding: 22px;
+      }
+
+      .blueprint {
+        padding: 12px;
+      }
+
+      .cta-band {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 25px;
+      }
+
+      .foot-row {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+    }
+
+  </style>
+
+
+  <!-- =========================================================
+       ORGANIZATION SCHEMA
+  ========================================================== -->
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "@id": "https://cgsample.ir/#organization",
+    "name": "CGSample",
+    "url": "https://cgsample.ir/",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://cgsample.ir/assets/logo.png"
+    }
+  }
+  </script>
+
+
+  <!-- =========================================================
+       PRODUCT SCHEMA
+  ========================================================== -->
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "@id": "https://cgsample.ir/plugin/artakan-create-stairs#software",
+    "name": "Artakan Create Stairs",
+    "applicationCategory": "MultimediaApplication",
+    "applicationSubCategory": "3D Modeling Software",
+    "operatingSystem": "Windows",
+    "softwareVersion": "3.00",
+    "description": "Artakan Create Stairs is a parametric stair, railing and handrail plugin for Autodesk 3ds Max.",
+    "url": "https://cgsample.ir/plugin/artakan-create-stairs",
+    "image": "https://cgsample.ir/assets/create-stairs-box.png",
+    "publisher": {
+      "@type": "Organization",
+      "name": "CGSample",
+      "url": "https://cgsample.ir/"
+    },
+    "offers": {
+      "@type": "Offer",
+      "url": "https://cgsample.ir/plugin/artakan-create-stairs",
+      "availability": "https://schema.org/PreOrder"
+    }
+  }
+  </script>
+
+
+  <!-- =========================================================
+       BREADCRUMB SCHEMA
+  ========================================================== -->
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://cgsample.ir/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Plugins",
+        "item": "https://cgsample.ir/#plugins"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Artakan Create Stairs",
+        "item": "https://cgsample.ir/plugin/artakan-create-stairs"
+      }
+    ]
+  }
+  </script>
+
+
 </head>
+
+
 <body>
 
-<header class="titleblock">
-  <div class="wrap tb-row">
-    <div class="tb-brand">
-      <svg class="tb-mark" viewBox="0 0 40 40" fill="none">
-        <rect x="1" y="1" width="38" height="38" stroke="#5fd4e0" stroke-width="1.4"/>
-        <path d="M7 30h6v-6h6v-6h6v-6h6" stroke="#c17845" stroke-width="2.4" stroke-linecap="square"/>
-      </svg>
-      <div class="tb-name">Artakan<span>ARTAKAN CO. — 3DS MAX PLUGINS</span></div>
-    </div>
-    <nav class="tb-nav">
-      <a href="/">Home</a>
-      <a href="/plugin/artakan-create-stairs" class="active">Create Stairs</a>
-      <a href="planto3d.html">PlanTo3D</a>
-      <a href="/plugin/artakan-architect-desktop">Architect Desktop</a>
-      <a href="/about">About</a>
-      <a href="mailto:info@cgsample.ir" class="tb-cta">Email us</a>
-    </nav>
-  </div>
-</header>
 
-<section class="hero">
-  <div class="wrap hero-grid">
-    <div>
-      <span class="eyebrow">// PLUGIN 01 · v3.00 · MAXSCRIPT</span>
-      <h1>Create <em>Stairs</em></h1>
-      <p class="lead">A fully parametric stair, railing and handrail system for 3ds Max. Set your parameters once, then just draw the run of the staircase — the plugin builds the rest.</p>
-      <div class="hero-actions">
-        <a ="mailto:info@cgsample.ir?subject=Buy Create Stairs plugin" class="btn btn-primary">Buy — email us</a>
-        <a ="https://www.scriptspot.com/3ds-max/scripts/create-stairs" class="btn btn-ghost">ScriptSpot page</a>
-      </div>
-    </div>
-    <div class="shot">
-      <img src="../assets/create-stairs-box.png" alt="Create Stairs plugin case artwork, showing a rendered wooden staircase with metal railing">
-    </div>
-  </div>
-</section>
+  <!-- =========================================================
+       HEADER
+  ========================================================== -->
 
-<section>
-  <div class="wrap">
-    <div class="dim"><span class="dim-label">SPECIFICATIONS</span></div>
-    <div class="section-head">
-      <h2>What it builds</h2>
-      <p>Instead of separate stair and railing objects, the plugin generates one parametric system where every part stays editable.</p>
-    </div>
-    <div class="feature-list">
-      <div class="feature">
-        <span class="idx">01</span>
-        <div><h4>Parametric stairs</h4><p>Set rise, tread depth, width and type (straight, turned, double entry) with a few simple spinners.</p></div>
-      </div>
-      <div class="feature">
-        <span class="idx">02</span>
-        <div><h4>Railing &amp; handrail</h4><p>A metal railing with vertical balusters and a wooden handrail is generated automatically along the stair path.</p></div>
-      </div>
-      <div class="feature">
-        <span class="idx">03</span>
-        <div><h4>Material control</h4><p>Separate material slots for treads, railing and handrail — works with V-Ray and Corona.</p></div>
-      </div>
-      <div class="feature">
-        <span class="idx">04</span>
-        <div><h4>Live editing</h4><p>Change the stair's length or angle at any time without losing materials or previous settings.</p></div>
-      </div>
-      <div class="feature">
-        <span class="idx">05</span>
-        <div><h4>Lightweight output</h4><p>Optimized mesh with a low poly count, suited to heavy architectural scenes.</p></div>
-      </div>
-      <div class="feature">
-        <span class="idx">06</span>
-        <div><h4>Version compatibility</h4><p>Tested on common 3ds Max versions; email us before purchase to confirm your version.</p></div>
-      </div>
-    </div>
-  </div>
-</section>
+  <header class="titleblock">
 
-<section>
-  <div class="wrap">
-    <div class="dim"><span class="dim-label">TUTORIALS</span></div>
-    <div class="section-head">
-      <h2>See it in use</h2>
-      <p>Our own walkthrough, plus tutorials other creators have made for Create Stairs.</p>
-    </div>
-    <div class="grid-2">
-      <a class="video-card" ="https://www.youtube.com/watch?v=M_rkyWff-u8" target="_blank" rel="noopener">
-        <div class="video-thumb">
-          <img src="https://img.youtube.com/vi/M_rkyWff-u8/hqdefault.jpg" alt="Thumbnail for the official Create Stairs tutorial" loading="lazy">
-          <div class="video-play"><svg viewBox="0 0 68 48"><path d="M66.5 7.7c-.8-2.9-2.5-5.1-5.4-5.9C55.8 0 34 0 34 0S12.2 0 6.9 1.8C4 2.6 2.3 4.8 1.5 7.7 0 13 0 24 0 24s0 11 1.5 16.3c.8 2.9 2.5 5.1 5.4 5.9C12.2 48 34 48 34 48s21.8 0 27.1-1.8c2.9-.8 4.6-3 5.4-5.9C68 35 68 24 68 24s0-11-1.5-16.3z" fill="#c17845"/><path d="M45 24 27 14v20z" fill="#fff"/></svg></div>
+    <div class="wrap tb-row">
+
+      <a
+        href="/"
+        class="tb-brand"
+        aria-label="CGSample home"
+      >
+
+        <svg
+          class="tb-mark"
+          viewBox="0 0 40 40"
+          fill="none"
+          aria-hidden="true"
+        >
+
+          <rect
+            x="1"
+            y="1"
+            width="38"
+            height="38"
+            stroke="#5fd4e0"
+            stroke-width="1.4"
+          />
+
+          <path
+            d="M7 30h6v-6h6v-6h6v-6h6"
+            stroke="#c17845"
+            stroke-width="2.4"
+            stroke-linecap="square"
+          />
+
+        </svg>
+
+
+        <div class="tb-name">
+
+          CG<span>Sample</span>
+
+          <span>
+            CGSAMPLE — 3DS MAX PLUGINS
+          </span>
+
         </div>
-        <div class="video-body">
-          <h4>How to create stairs in 3ds Max with Artakan Create Stairs</h4>
-          <div class="video-meta"><span class="src">OFFICIAL — CGSAMPLE</span><span class="watch">Watch ↗</span></div>
-        </div>
+
       </a>
-      <a class="video-card" ="https://www.youtube.com/watch?v=Ri_CvWbQaho" target="_blank" rel="noopener">
-        <div class="video-thumb">
-          <img src="https://img.youtube.com/vi/Ri_CvWbQaho/hqdefault.jpg" alt="Thumbnail for the CGTricks tutorial on Create Stairs" loading="lazy">
-          <div class="video-play"><svg viewBox="0 0 68 48"><path d="M66.5 7.7c-.8-2.9-2.5-5.1-5.4-5.9C55.8 0 34 0 34 0S12.2 0 6.9 1.8C4 2.6 2.3 4.8 1.5 7.7 0 13 0 24 0 24s0 11 1.5 16.3c.8 2.9 2.5 5.1 5.4 5.9C12.2 48 34 48 34 48s21.8 0 27.1-1.8c2.9-.8 4.6-3 5.4-5.9C68 35 68 24 68 24s0-11-1.5-16.3z" fill="#c17845"/><path d="M45 24 27 14v20z" fill="#fff"/></svg></div>
-        </div>
-        <div class="video-body">
-          <h4>How to create quickly stairs in 3dsMax</h4>
-          <div class="video-meta"><span class="src">CGTRICKS</span><span class="watch">Watch ↗</span></div>
-        </div>
-      </a>
-      <a class="video-card" ="https://www.youtube.com/watch?v=r3Bw2QuspHs" target="_blank" rel="noopener">
-        <div class="video-thumb">
-          <img src="https://img.youtube.com/vi/r3Bw2QuspHs/hqdefault.jpg" alt="Thumbnail for an Arabic-language Create Stairs tutorial" loading="lazy">
-          <div class="video-play"><svg viewBox="0 0 68 48"><path d="M66.5 7.7c-.8-2.9-2.5-5.1-5.4-5.9C55.8 0 34 0 34 0S12.2 0 6.9 1.8C4 2.6 2.3 4.8 1.5 7.7 0 13 0 24 0 24s0 11 1.5 16.3c.8 2.9 2.5 5.1 5.4 5.9C12.2 48 34 48 34 48s21.8 0 27.1-1.8c2.9-.8 4.6-3 5.4-5.9C68 35 68 24 68 24s0-11-1.5-16.3z" fill="#c17845"/><path d="M45 24 27 14v20z" fill="#fff"/></svg></div>
-        </div>
-        <div class="video-body">
-          <h4>Create Stairs — quick staircase walkthrough (Arabic)</h4>
-          <div class="video-meta"><span class="src">COMMUNITY</span><span class="watch">Watch ↗</span></div>
-        </div>
-      </a>
-      <a class="video-card" ="https://www.youtube.com/watch?v=NjfwLydQDKQ" target="_blank" rel="noopener">
-        <div class="video-thumb">
-          <img src="https://img.youtube.com/vi/NjfwLydQDKQ/hqdefault.jpg" alt="Thumbnail for a Vietnamese-language Create Stairs tutorial" loading="lazy">
-          <div class="video-play"><svg viewBox="0 0 68 48"><path d="M66.5 7.7c-.8-2.9-2.5-5.1-5.4-5.9C55.8 0 34 0 34 0S12.2 0 6.9 1.8C4 2.6 2.3 4.8 1.5 7.7 0 13 0 24 0 24s0 11 1.5 16.3c.8 2.9 2.5 5.1 5.4 5.9C12.2 48 34 48 34 48s21.8 0 27.1-1.8c2.9-.8 4.6-3 5.4-5.9C68 35 68 24 68 24s0-11-1.5-16.3z" fill="#c17845"/><path d="M45 24 27 14v20z" fill="#fff"/></svg></div>
-        </div>
-        <div class="video-body">
-          <h4>Create Stairs 2.3.0 — quick staircase walkthrough (Vietnamese)</h4>
-          <div class="video-meta"><span class="src">COMMUNITY</span><span class="watch">Watch ↗</span></div>
-        </div>
-      </a>
-    </div>
-  </div>
-</section>
 
-<section>
-  <div class="wrap">
-    <div class="cta-band">
-      <div>
-        <h3>Want to get Create Stairs?</h3>
-        <p>The online store is temporarily unavailable. For purchase, pricing or version compatibility, just email us.</p>
+
+      <nav
+        class="tb-nav"
+        aria-label="Main navigation"
+      >
+
+        <a href="/">
+          Home
+        </a>
+
+        <a
+          href="/plugin/artakan-create-stairs"
+          class="active"
+          aria-current="page"
+        >
+          Create Stairs
+        </a>
+
+        <a href="/plugin/planto3d">
+          PlanTo3D
+        </a>
+
+        <a href="/plugin/artakan-architect-desktop">
+          Architect Desktop
+        </a>
+
+        <a href="/about">
+          About
+        </a>
+
+        <a
+          href="mailto:info@cgsample.ir?subject=Artakan%20Create%20Stairs"
+          class="tb-cta"
+        >
+          Email us
+        </a>
+
+      </nav>
+
+    </div>
+
+  </header>
+
+
+  <main>
+
+
+    <!-- =========================================================
+         BREADCRUMB
+    ========================================================== -->
+
+    <div class="wrap breadcrumb">
+
+      <a href="/">
+        Home
+      </a>
+
+      <span>→</span>
+
+      <a href="/#plugins">
+        Plugins
+      </a>
+
+      <span>→</span>
+
+      <strong>
+        Create Stairs
+      </strong>
+
+    </div>
+
+
+    <!-- =========================================================
+         HERO
+    ========================================================== -->
+
+    <section class="hero">
+
+      <div class="wrap hero-grid">
+
+
+        <div>
+
+          <span class="eyebrow">
+            // PLUGIN 01 · v3.00 · MAXSCRIPT
+          </span>
+
+
+          <h1>
+            Artakan Create <em>Stairs</em>
+          </h1>
+
+
+          <p class="lead">
+            Artakan Create Stairs is a parametric staircase plugin
+            for Autodesk 3ds Max. Create stairs, railings and handrails
+            by adjusting the main dimensions and parameters of your
+            staircase instead of building every element manually.
+          </p>
+
+
+          <div class="hero-actions">
+
+            <a
+              href="mailto:info@cgsample.ir?subject=Buy%20Artakan%20Create%20Stairs"
+              class="btn btn-primary"
+            >
+              Buy — Email us
+            </a>
+
+
+            <a
+              href="https://www.scriptspot.com/3ds-max/scripts/create-stairs"
+              class="btn btn-ghost"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              ScriptSpot page ↗
+            </a>
+
+          </div>
+
+        </div>
+
+
+        <div class="shot">
+
+          <img
+            src="../assets/create-stairs-box.png"
+            alt="Artakan Create Stairs plugin for Autodesk 3ds Max showing a rendered architectural staircase with railing"
+            width="900"
+            height="900"
+            fetchpriority="high"
+          >
+
+        </div>
+
+
       </div>
-      <a ="mailto:info@cgsample.ir?subject=Buy Create Stairs plugin" class="btn btn-primary">info@cgsample.ir</a>
-    </div>
-  </div>
-</section>
 
-<footer>
-  <div class="wrap foot-row">
-    <span class="mono">ARTAKAN CO. — SHEET 02/05 — CREATE STAIRS v3</span>
-    <div class="foot-links">
-      <a href="/">Home</a>
-      <a href="/about">About</a>
-      <a href="mailto:info@cgsample.ir">info@cgsample.ir</a>
+    </section>
+
+
+    <!-- =========================================================
+         WHAT IT BUILDS
+    ========================================================== -->
+
+    <section
+      id="features"
+      aria-labelledby="features-title"
+    >
+
+      <div class="wrap">
+
+        <div class="dim">
+          <span class="dim-label">
+            SPECIFICATIONS
+          </span>
+        </div>
+
+
+        <div class="section-head">
+
+          <span class="eyebrow">
+            ARTAKAN / CREATE STAIRS
+          </span>
+
+          <h2 id="features-title">
+            What Artakan Create Stairs Builds
+          </h2>
+
+          <p>
+            The plugin is designed to simplify repetitive staircase
+            modeling tasks inside Autodesk 3ds Max, while keeping
+            the generated elements editable through the available
+            parameters.
+          </p>
+
+        </div>
+
+
+        <div class="feature-list">
+
+
+          <article class="feature">
+
+            <span class="idx">
+              01
+            </span>
+
+            <div>
+
+              <h3>
+                Parametric Stairs
+              </h3>
+
+              <p>
+                Set rise, tread depth, staircase width and stair type
+                using adjustable parameters for creating different
+                architectural staircase configurations.
+              </p>
+
+            </div>
+
+          </article>
+
+
+          <article class="feature">
+
+            <span class="idx">
+              02
+            </span>
+
+            <div>
+
+              <h3>
+                Railing &amp; Handrail
+              </h3>
+
+              <p>
+                Generate railing and handrail elements along the
+                staircase path instead of modeling each component
+                manually.
+              </p>
+
+            </div>
+
+          </article>
+
+
+          <article class="feature">
+
+            <span class="idx">
+              03
+            </span>
+
+            <div>
+
+              <h3>
+                Material Control
+              </h3>
+
+              <p>
+                Use separate material controls for staircase treads,
+                railing and handrail elements. The workflow is designed
+                for common architectural rendering pipelines.
+              </p>
+
+            </div>
+
+          </article>
+
+
+          <article class="feature">
+
+            <span class="idx">
+              04
+            </span>
+
+            <div>
+
+              <h3>
+                Editable Parameters
+              </h3>
+
+              <p>
+                Adjust available staircase parameters during the
+                modeling process without rebuilding the complete
+                staircase manually.
+              </p>
+
+            </div>
+
+          </article>
+
+
+          <article class="feature">
+
+            <span class="idx">
+              05
+            </span>
+
+            <div>
+
+              <h3>
+                Architectural Workflow
+              </h3>
+
+              <p>
+                Designed for architects, interior designers and
+                3D artists who regularly create stairs and railing
+                systems in Autodesk 3ds Max.
+              </p>
+
+            </div>
+
+          </article>
+
+
+          <article class="feature">
+
+            <span class="idx">
+              06
+            </span>
+
+            <div>
+
+              <h3>
+                Version Compatibility
+              </h3>
+
+              <p>
+                Create Stairs is available in version 3.00.
+                Contact CGSample before purchase to confirm compatibility
+                with your installed 3ds Max version.
+              </p>
+
+            </div>
+
+          </article>
+
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================================================
+         BLUEPRINT
+    ========================================================== -->
+
+    <section aria-labelledby="stair-section-title">
+
+      <div class="wrap">
+
+        <div class="dim">
+          <span class="dim-label">
+            TECHNICAL VIEW
+          </span>
+        </div>
+
+
+        <div class="section-head">
+
+          <span class="eyebrow">
+            PARAMETRIC STAIRCASE
+          </span>
+
+          <h2 id="stair-section-title">
+            Stair Parameters at a Glance
+          </h2>
+
+          <p>
+            A technical representation of staircase dimensions,
+            including tread run, rise and railing angle.
+          </p>
+
+        </div>
+
+
+        <div class="blueprint">
+
+          <span class="blueprint-tag">
+            FIG. 01 — STAIR SECTION
+          </span>
+
+
+          <svg
+            class="stair-draw"
+            viewBox="0 0 420 300"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            role="img"
+            aria-labelledby="stair-drawing-title stair-drawing-desc"
+          >
+
+            <title id="stair-drawing-title">
+              Technical staircase section drawing
+            </title>
+
+            <desc id="stair-drawing-desc">
+              Staircase section showing six 280 millimeter runs,
+              a 180 millimeter rise and a 32 degree railing angle.
+            </desc>
+
+
+            <path
+              d="M40 250 H90 V210 H140 V170 H190 V130 H240 V90 H290"
+              stroke="#5fd4e0"
+              stroke-width="2.4"
+              stroke-linecap="square"
+            />
+
+
+            <path
+              d="M40 250 L60 262
+                 M90 250 L90 262
+                 M140 210 L140 262
+                 M190 170 L190 262
+                 M240 130 L240 262
+                 M290 90 L290 262"
+              stroke="#294455"
+              stroke-width="1"
+            />
+
+
+            <path
+              d="M50 240 L290 78"
+              stroke="#c17845"
+              stroke-width="2"
+            />
+
+
+            <line
+              x1="50"
+              y1="240"
+              x2="50"
+              y2="220"
+              stroke="#c17845"
+              stroke-width="2"
+            />
+
+            <line
+              x1="90"
+              y1="200"
+              x2="90"
+              y2="180"
+              stroke="#c17845"
+              stroke-width="2"
+            />
+
+            <line
+              x1="140"
+              y1="160"
+              x2="140"
+              y2="140"
+              stroke="#c17845"
+              stroke-width="2"
+            />
+
+            <line
+              x1="190"
+              y1="120"
+              x2="190"
+              y2="100"
+              stroke="#c17845"
+              stroke-width="2"
+            />
+
+            <line
+              x1="240"
+              y1="80"
+              x2="240"
+              y2="60"
+              stroke="#c17845"
+              stroke-width="2"
+            />
+
+
+            <line
+              x1="40"
+              y1="272"
+              x2="290"
+              y2="272"
+              stroke="#5fd4e0"
+              stroke-width="1"
+            />
+
+            <line
+              x1="40"
+              y1="266"
+              x2="40"
+              y2="278"
+              stroke="#5fd4e0"
+              stroke-width="1"
+            />
+
+            <line
+              x1="290"
+              y1="266"
+              x2="290"
+              y2="278"
+              stroke="#5fd4e0"
+              stroke-width="1"
+            />
+
+
+            <text
+              x="130"
+              y="290"
+              fill="#5fd4e0"
+              font-size="11"
+              font-family="JetBrains Mono, monospace"
+            >
+              RUN 280mm × 6
+            </text>
+
+
+            <text
+              x="300"
+              y="70"
+              fill="#5fd4e0"
+              font-size="11"
+              font-family="JetBrains Mono, monospace"
+            >
+              RISE 180mm
+            </text>
+
+
+            <text
+              x="150"
+              y="115"
+              fill="#e0955f"
+              font-size="11"
+              font-family="JetBrains Mono, monospace"
+            >
+              ∠ RAIL 32°
+            </text>
+
+          </svg>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================================================
+         TUTORIALS
+    ========================================================== -->
+
+    <section
+      id="tutorials"
+      aria-labelledby="tutorials-title"
+    >
+
+      <div class="wrap">
+
+        <div class="dim">
+          <span class="dim-label">
+            TUTORIALS
+          </span>
+        </div>
+
+
+        <div class="section-head">
+
+          <span class="eyebrow">
+            VIDEO / CREATE STAIRS
+          </span>
+
+          <h2 id="tutorials-title">
+            See Artakan Create Stairs in Use
+          </h2>
+
+          <p>
+            Watch tutorials showing how Create Stairs can be used
+            to create architectural staircases inside Autodesk 3ds Max.
+          </p>
+
+        </div>
+
+
+        <div class="grid-2">
+
+
+          <!-- VIDEO 01 -->
+
+          <a
+            class="video-card"
+            href="https://www.youtube.com/watch?v=M_rkyWff-u8"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Watch the official Artakan Create Stairs tutorial on YouTube"
+          >
+
+            <div class="video-thumb">
+
+              <img
+                src="https://img.youtube.com/vi/M_rkyWff-u8/hqdefault.jpg"
+                alt="Official Artakan Create Stairs tutorial for Autodesk 3ds Max"
+                width="480"
+                height="360"
+                loading="lazy"
+              >
+
+
+              <div
+                class="video-play"
+                aria-hidden="true"
+              >
+
+                <svg viewBox="0 0 68 48">
+
+                  <path
+                    d="M66.5 7.7c-.8-2.9-2.5-5.1-5.4-5.9C55.8 0 34 0 34 0S12.2 0 6.9 1.8C4 2.6 2.3 4.8 1.5 7.7 0 13 0 24 0 24s0 11 1.5 16.3c.8 2.9 2.5 5.1 5.4 5.9C12.2 48 34 48 34 48s21.8 0 27.1-1.8c2.9-.8 4.6-3 5.4-5.9C68 35 68 24 68 24s0-11-1.5-16.3z"
+                    fill="#c17845"
+                  />
+
+                  <path
+                    d="M45 24 27 14v20z"
+                    fill="#fff"
+                  />
+
+                </svg>
+
+              </div>
+
+            </div>
+
+
+            <div class="video-body">
+
+              <h3>
+                How to Create Stairs in 3ds Max with Artakan Create Stairs
+              </h3>
+
+              <div class="video-meta">
+
+                <span class="src">
+                  OFFICIAL — CGSAMPLE
+                </span>
+
+                <span class="watch">
+                  Watch ↗
+                </span>
+
+              </div>
+
+            </div>
+
+          </a>
+
+
+          <!-- VIDEO 02 -->
+
+          <a
+            class="video-card"
+            href="https://www.youtube.com/watch?v=Ri_CvWbQaho"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Watch the CGTricks Artakan Create Stairs tutorial on YouTube"
+          >
+
+            <div class="video-thumb">
+
+              <img
+                src="https://img.youtube.com/vi/Ri_CvWbQaho/hqdefault.jpg"
+                alt="CGTricks tutorial showing how to create stairs in 3ds Max"
+                width="480"
+                height="360"
+                loading="lazy"
+              >
+
+
+              <div
+                class="video-play"
+                aria-hidden="true"
+              >
+
+                <svg viewBox="0 0 68 48">
+
+                  <path
+                    d="M66.5 7.7c-.8-2.9-2.5-5.1-5.4-5.9C55.8 0 34 0 34 0S12.2 0 6.9 1.8C4 2.6 2.3 4.8 1.5 7.7 0 13 0 24 0 24s0 11 1.5 16.3c.8 2.9 2.5 5.1 5.4 5.9C12.2 48 34 48 34 48s21.8 0 27.1-1.8c2.9-.8 4.6-3 5.4-5.9C68 35 68 24 68 24s0-11-1.5-16.3z"
+                    fill="#c17845"
+                  />
+
+                  <path
+                    d="M45 24 27 14v20z"
+                    fill="#fff"
+                  />
+
+                </svg>
+
+              </div>
+
+            </div>
+
+
+            <div class="video-body">
+
+              <h3>
+                How to Create Stairs Quickly in 3ds Max
+              </h3>
+
+              <div class="video-meta">
+
+                <span class="src">
+                  CGTRICKS
+                </span>
+
+                <span class="watch">
+                  Watch ↗
+                </span>
+
+              </div>
+
+            </div>
+
+          </a>
+
+
+          <!-- VIDEO 03 -->
+
+          <a
+            class="video-card"
+            href="https://www.youtube.com/watch?v=r3Bw2QuspHs"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Watch the Arabic Artakan Create Stairs tutorial"
+          >
+
+            <div class="video-thumb">
+
+              <img
+                src="https://img.youtube.com/vi/r3Bw2QuspHs/hqdefault.jpg"
+                alt="Arabic-language Artakan Create Stairs tutorial"
+                width="480"
+                height="360"
+                loading="lazy"
+              >
+
+
+              <div
+                class="video-play"
+                aria-hidden="true"
+              >
+
+                <svg viewBox="0 0 68 48">
+
+                  <path
+                    d="M66.5 7.7c-.8-2.9-2.5-5.1-5.4-5.9C55.8 0 34 0 34 0S12.2 0 6.9 1.8C4 2.6 2.3 4.8 1.5 7.7 0 13 0 24 0 24s0 11 1.5 16.3c.8 2.9 2.5 5.1 5.4 5.9C12.2 48 34 48 34 48s21.8 0 27.1-1.8c2.9-.8 4.6-3 5.4-5.9C68 35 68 24 68 24s0-11-1.5-16.3z"
+                    fill="#c17845"
+                  />
+
+                  <path
+                    d="M45 24 27 14v20z"
+                    fill="#fff"
+                  />
+
+                </svg>
+
+              </div>
+
+            </div>
+
+
+            <div class="video-body">
+
+              <h3>
+                Create Stairs — Quick Staircase Walkthrough
+              </h3>
+
+              <div class="video-meta">
+
+                <span class="src">
+                  COMMUNITY
+                </span>
+
+                <span class="watch">
+                  Watch ↗
+                </span>
+
+              </div>
+
+            </div>
+
+          </a>
+
+
+          <!-- VIDEO 04 -->
+
+          <a
+            class="video-card"
+            href="https://www.youtube.com/watch?v=NjfwLydQDKQ"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Watch the Vietnamese Artakan Create Stairs tutorial"
+          >
+
+            <div class="video-thumb">
+
+              <img
+                src="https://img.youtube.com/vi/NjfwLydQDKQ/hqdefault.jpg"
+                alt="Vietnamese-language Artakan Create Stairs tutorial"
+                width="480"
+                height="360"
+                loading="lazy"
+              >
+
+
+              <div
+                class="video-play"
+                aria-hidden="true"
+              >
+
+                <svg viewBox="0 0 68 48">
+
+                  <path
+                    d="M66.5 7.7c-.8-2.9-2.5-5.1-5.4-5.9C55.8 0 34 0 34 0S12.2 0 6.9 1.8C4 2.6 2.3 4.8 1.5 7.7 0 13 0 24 0 24s0 11 1.5 16.3c.8 2.9 2.5 5.1 5.4 5.9C12.2 48 34 48 34 48s21.8 0 27.1-1.8c2.9-.8 4.6-3 5.4-5.9C68 35 68 24 68 24s0-11-1.5-16.3z"
+                    fill="#c17845"
+                  />
+
+                  <path
+                    d="M45 24 27 14v20z"
+                    fill="#fff"
+                  />
+
+                </svg>
+
+              </div>
+
+            </div>
+
+
+            <div class="video-body">
+
+              <h3>
+                Create Stairs 2.3.0 — Quick Staircase Walkthrough
+              </h3>
+
+              <div class="video-meta">
+
+                <span class="src">
+                  COMMUNITY
+                </span>
+
+                <span class="watch">
+                  Watch ↗
+                </span>
+
+              </div>
+
+            </div>
+
+          </a>
+
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================================================
+         PURCHASE CTA
+    ========================================================== -->
+
+    <section>
+
+      <div class="wrap">
+
+        <div class="cta-band">
+
+          <div>
+
+            <span class="eyebrow">
+              GET CREATE STAIRS
+            </span>
+
+            <h2>
+              Need Artakan Create Stairs?
+            </h2>
+
+            <p>
+              The online store is temporarily unavailable.
+              For purchase, pricing or 3ds Max version compatibility,
+              contact CGSample by email.
+            </p>
+
+          </div>
+
+
+          <a
+            href="mailto:info@cgsample.ir?subject=Buy%20Artakan%20Create%20Stairs"
+            class="btn btn-primary"
+          >
+            info@cgsample.ir
+          </a>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================================================
+         FAQ
+    ========================================================== -->
+
+    <section
+      id="faq"
+      aria-labelledby="faq-title"
+    >
+
+      <div class="wrap">
+
+        <div class="dim">
+          <span class="dim-label">
+            FAQ
+          </span>
+        </div>
+
+
+        <div class="section-head">
+
+          <span class="eyebrow">
+            QUESTIONS / ANSWERS
+          </span>
+
+          <h2 id="faq-title">
+            Artakan Create Stairs FAQ
+          </h2>
+
+          <p>
+            Common questions about the Create Stairs plugin for
+            Autodesk 3ds Max.
+          </p>
+
+        </div>
+
+
+        <div class="faq">
+
+
+          <details>
+
+            <summary>
+              What is Artakan Create Stairs?
+            </summary>
+
+            <p>
+              Artakan Create Stairs is a parametric staircase plugin
+              for Autodesk 3ds Max that helps users create stairs,
+              railings and handrails using adjustable parameters.
+            </p>
+
+          </details>
+
+
+          <details>
+
+            <summary>
+              What can Create Stairs generate?
+            </summary>
+
+            <p>
+              The plugin is designed to generate staircase elements,
+              railings and handrails. Available parameters include
+              staircase dimensions and other controls used to create
+              different architectural stair configurations.
+            </p>
+
+          </details>
+
+
+          <details>
+
+            <summary>
+              Is Artakan Create Stairs compatible with my version of 3ds Max?
+            </summary>
+
+            <p>
+              Create Stairs is currently listed as version 3.00.
+              Because compatibility can depend on the specific
+              3ds Max release, contact CGSample before purchasing
+              to confirm compatibility with your installed version.
+            </p>
+
+          </details>
+
+
+          <details>
+
+            <summary>
+              Who is Create Stairs designed for?
+            </summary>
+
+            <p>
+              The plugin is designed for architects, interior designers,
+              architectural visualization artists and 3D artists who
+              create staircases inside Autodesk 3ds Max.
+            </p>
+
+          </details>
+
+
+          <details>
+
+            <summary>
+              How can I purchase Create Stairs?
+            </summary>
+
+            <p>
+              The online store is temporarily unavailable.
+              Contact CGSample at info@cgsample.ir for current pricing,
+              purchase instructions and version compatibility.
+            </p>
+
+          </details>
+
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+  </main>
+
+
+  <!-- =========================================================
+       FOOTER
+  ========================================================== -->
+
+  <footer>
+
+    <div class="wrap foot-row">
+
+      <span class="mono">
+        CGSAMPLE — SHEET 02/05 — ARTAKAN CREATE STAIRS v3.00
+      </span>
+
+
+      <div class="foot-links">
+
+        <a href="/">
+          Home
+        </a>
+
+        <a href="/about">
+          About
+        </a>
+
+        <!-- Replace # with the real social URLs later -->
+
+
+
+        <a
+          href="https://www.instagram.com/cgsample"
+          aria-label="CGSample on Instagram"
+        >
+          Instagram
+        </a>
+
+        <a href="mailto:info@cgsample.ir">
+          info@cgsample.ir
+        </a>
+
+      </div>
+
     </div>
-  </div>
-</footer>
+
+  </footer>
+
+
+  <!-- =========================================================
+       FAQ STRUCTURED DATA
+  ========================================================== -->
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is Artakan Create Stairs?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Artakan Create Stairs is a parametric staircase plugin for Autodesk 3ds Max that helps users create stairs, railings and handrails using adjustable parameters."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What can Create Stairs generate?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The plugin is designed to generate staircase elements, railings and handrails using adjustable parameters for different architectural stair configurations."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is Artakan Create Stairs compatible with my version of 3ds Max?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Create Stairs is currently listed as version 3.00. Because compatibility can depend on the specific 3ds Max release, users should contact CGSample before purchasing to confirm compatibility."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Who is Create Stairs designed for?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The plugin is designed for architects, interior designers, architectural visualization artists and 3D artists who create staircases inside Autodesk 3ds Max."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How can I purchase Create Stairs?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The online store is temporarily unavailable. Customers can contact CGSample at info@cgsample.ir for current pricing, purchase instructions and version compatibility."
+        }
+      }
+    ]
+  }
+  </script>
+
+
+  <!-- =========================================================
+       VIDEO STRUCTURED DATA
+  ========================================================== -->
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "Artakan Create Stairs Tutorials",
+    "itemListElement": [
+      {
+        "@type": "VideoObject",
+        "position": 1,
+        "name": "How to Create Stairs in 3ds Max with Artakan Create Stairs",
+        "description": "Official Artakan Create Stairs tutorial for Autodesk 3ds Max.",
+        "thumbnailUrl": "https://img.youtube.com/vi/M_rkyWff-u8/hqdefault.jpg",
+        "contentUrl": "https://www.youtube.com/watch?v=M_rkyWff-u8"
+      },
+      {
+        "@type": "VideoObject",
+        "position": 2,
+        "name": "How to Create Stairs Quickly in 3ds Max",
+        "description": "CGTricks tutorial showing how to create stairs in 3ds Max.",
+        "thumbnailUrl": "https://img.youtube.com/vi/Ri_CvWbQaho/hqdefault.jpg",
+        "contentUrl": "https://www.youtube.com/watch?v=Ri_CvWbQaho"
+      },
+      {
+        "@type": "VideoObject",
+        "position": 3,
+        "name": "Create Stairs — Quick Staircase Walkthrough",
+        "description": "Community tutorial demonstrating Artakan Create Stairs.",
+        "thumbnailUrl": "https://img.youtube.com/vi/r3Bw2QuspHs/hqdefault.jpg",
+        "contentUrl": "https://www.youtube.com/watch?v=r3Bw2QuspHs"
+      },
+      {
+        "@type": "VideoObject",
+        "position": 4,
+        "name": "Create Stairs 2.3.0 — Quick Staircase Walkthrough",
+        "description": "Community tutorial demonstrating Artakan Create Stairs version 2.3.0.",
+        "thumbnailUrl": "https://img.youtube.com/vi/NjfwLydQDKQ/hqdefault.jpg",
+        "contentUrl": "https://www.youtube.com/watch?v=NjfwLydQDKQ"
+      }
+    ]
+  }
+  </script>
+
 
 </body>
 </html>
+
