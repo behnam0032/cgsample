@@ -1,127 +1,1587 @@
+
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Artakan | Professional 3ds Max Plugins</title>
-<meta name="description" content="Artakan builds specialist 3ds Max plugins for architecture and interior design: Create Stairs, PlanTo3D and Architect Desktop.">
+
+  <!-- =========================
+       BASIC SEO
+  ========================== -->
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>
+    CGSample — 3ds Max Plugins & Architectural Tools
+  </title>
+
+  <meta
+    name="description"
+    content="CGSample creates professional Autodesk 3ds Max plugins and architectural tools for architects, interior designers and 3D artists. Explore Artakan Create Stairs, PlanTo3D and Architect Desktop."
+  >
+
+  <meta
+    name="robots"
+    content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+  >
+
+  <meta
+    name="author"
+    content="CGSample"
+  >
+
+  <meta
+    name="theme-color"
+    content="#0b1117"
+  >
+
+  <link
+    rel="canonical"
+    href="https://cgsample.ir/"
+  >
+
+
+  <!-- =========================
+       OPEN GRAPH
+  ========================== -->
+
+  <meta
+    property="og:type"
+    content="website"
+  >
+
+  <meta
+    property="og:title"
+    content="CGSample — 3ds Max Plugins & Architectural Tools"
+  >
+
+  <meta
+    property="og:description"
+    content="Professional Autodesk 3ds Max plugins for architecture, 3D modeling and design workflows."
+  >
+
+  <meta
+    property="og:url"
+    content="https://cgsample.ir/"
+  >
+
+  <meta
+    property="og:site_name"
+    content="CGSample"
+  >
+
+  <meta
+    property="og:locale"
+    content="en_US"
+  >
+
+  <!-- Replace with your real OG image -->
+  <meta
+    property="og:image"
+    content="https://cgsample.ir/assets/images/og-image.jpg"
+  >
+
+  <meta
+    property="og:image:width"
+    content="1200"
+  >
+
+  <meta
+    property="og:image:height"
+    content="630"
+  >
+
+  <meta
+    property="og:image:alt"
+    content="CGSample — Autodesk 3ds Max Plugins and Architectural Tools"
+  >
+
+
+  <!-- =========================
+       TWITTER / X CARD
+  ========================== -->
+
+  <meta
+    name="twitter:card"
+    content="summary_large_image"
+  >
+
+  <meta
+    name="twitter:title"
+    content="CGSample — 3ds Max Plugins & Architectural Tools"
+  >
+
+  <meta
+    name="twitter:description"
+    content="Professional Autodesk 3ds Max plugins for architects, designers and 3D artists."
+  >
+
+  <meta
+    name="twitter:image"
+    content="https://cgsample.ir/assets/images/og-image.jpg"
+  >
+
+
+  <!-- =========================
+       FAVICON
+  ========================== -->
+
 <link rel="icon" href="/assets/favicon.ico" sizes="any">
 <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
 <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon-180.png">
-<link rel="stylesheet" href="assets/style.css">
+
+
+  <!-- =========================
+       PRECONNECT / FONTS
+  ========================== -->
+
+  <link
+    rel="preconnect"
+    href="https://fonts.googleapis.com"
+  >
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  >
+
+
+  <!-- =========================
+       STRUCTURED DATA
+  ========================== -->
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "@id": "https://cgsample.ir/#organization",
+    "name": "CGSample",
+    "url": "https://cgsample.ir/",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://cgsample.ir/assets/images/logo.png"
+    },
+    "description": "CGSample creates professional Autodesk 3ds Max plugins and architectural tools for architects, interior designers and 3D artists."
+  }
+  </script>
+
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "@id": "https://cgsample.ir/#website",
+    "url": "https://cgsample.ir/",
+    "name": "CGSample",
+    "publisher": {
+      "@id": "https://cgsample.ir/#organization"
+    }
+  }
+  </script>
+
+
+  <!-- =========================
+       STYLES
+  ========================== -->
+
+  <style>
+
+    :root {
+      --bg: #080d12;
+      --bg-soft: #0d141b;
+      --card: #101a22;
+      --border: #20303c;
+      --text: #e8f0f3;
+      --muted: #8b9ca5;
+      --cyan: #5fd4e0;
+      --orange: #c17845;
+      --orange-light: #e0955f;
+      --max-width: 1180px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: "JetBrains Mono", monospace;
+      line-height: 1.7;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .container {
+      width: min(100% - 40px, var(--max-width));
+      margin-inline: auto;
+    }
+
+
+    /* =========================
+       HEADER
+    ========================== */
+
+    header {
+      border-bottom: 1px solid var(--border);
+      background: rgba(8, 13, 18, .92);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(12px);
+    }
+
+    .nav {
+      min-height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 30px;
+    }
+
+    .logo {
+      font-size: 20px;
+      font-weight: 700;
+      letter-spacing: -1px;
+    }
+
+    .logo span {
+      color: var(--cyan);
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 26px;
+    }
+
+    nav a {
+      color: var(--muted);
+      font-size: 13px;
+      transition: color .2s ease;
+    }
+
+    nav a:hover {
+      color: var(--cyan);
+    }
+
+
+    /* =========================
+       HERO
+    ========================== */
+
+    .hero {
+      padding: 110px 0 90px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .eyebrow {
+      display: inline-block;
+      color: var(--cyan);
+      font-size: 11px;
+      letter-spacing: 1.5px;
+      margin-bottom: 22px;
+    }
+
+    .hero h1 {
+      max-width: 850px;
+      font-size: clamp(42px, 7vw, 82px);
+      line-height: 1.05;
+      letter-spacing: -4px;
+      margin-bottom: 28px;
+    }
+
+    .hero h1 span {
+      color: var(--cyan);
+    }
+
+    .hero-description {
+      max-width: 700px;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 2;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 38px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 46px;
+      padding: 0 22px;
+      border: 1px solid var(--border);
+      font-size: 12px;
+      transition: all .2s ease;
+    }
+
+    .btn-primary {
+      background: var(--cyan);
+      color: #071014;
+      border-color: var(--cyan);
+    }
+
+    .btn-primary:hover {
+      background: transparent;
+      color: var(--cyan);
+    }
+
+    .btn-secondary {
+      color: var(--muted);
+    }
+
+    .btn-secondary:hover {
+      color: var(--cyan);
+      border-color: var(--cyan);
+    }
+
+
+    /* =========================
+       SECTION
+    ========================== */
+
+    section {
+      padding: 90px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .section-header {
+      max-width: 780px;
+      margin-bottom: 48px;
+    }
+
+    .section-header h2 {
+      font-size: clamp(28px, 4vw, 48px);
+      line-height: 1.15;
+      letter-spacing: -2px;
+      margin-bottom: 20px;
+    }
+
+    .section-description {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 2;
+    }
+
+
+    /* =========================
+       BLUEPRINT
+    ========================== */
+
+    .blueprint-card {
+      border: 1px solid var(--border);
+      background:
+        linear-gradient(
+          rgba(95, 212, 224, .025) 1px,
+          transparent 1px
+        ),
+        linear-gradient(
+          90deg,
+          rgba(95, 212, 224, .025) 1px,
+          transparent 1px
+        ),
+        var(--bg-soft);
+
+      background-size: 30px 30px;
+      padding: 28px;
+      overflow: hidden;
+    }
+
+    .tag {
+      color: var(--cyan);
+      font-size: 10px;
+      letter-spacing: 1.4px;
+    }
+
+    .stair-draw {
+      width: 100%;
+      height: auto;
+      min-height: 300px;
+      margin-top: 10px;
+    }
+
+
+    /* =========================
+       PLUGINS
+    ========================== */
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .card {
+      position: relative;
+      border: 1px solid var(--border);
+      background: var(--card);
+      padding: 30px;
+      min-height: 390px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .card::before {
+      content: "";
+      position: absolute;
+      top: -1px;
+      left: -1px;
+      width: 40px;
+      height: 1px;
+      background: var(--cyan);
+    }
+
+    .num {
+      color: var(--orange);
+      font-size: 10px;
+      letter-spacing: 1px;
+      margin-bottom: 28px;
+    }
+
+    .card h3 {
+      font-size: 22px;
+      line-height: 1.3;
+      margin-bottom: 18px;
+    }
+
+    .card h3 a:hover {
+      color: var(--cyan);
+    }
+
+    .card p {
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 2;
+    }
+
+    .plugin-meta {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-top: auto;
+      padding-top: 30px;
+    }
+
+    .status {
+      color: #72d8a0;
+      font-size: 10px;
+    }
+
+    .version {
+      color: var(--muted);
+      font-size: 10px;
+    }
+
+    .card-link {
+      display: inline-block;
+      color: var(--cyan);
+      font-size: 11px;
+      margin-top: 18px;
+    }
+
+    .card-link:hover {
+      color: var(--orange-light);
+    }
+
+
+    /* =========================
+       ABOUT
+    ========================== */
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 70px;
+      align-items: start;
+    }
+
+    .about-grid h2 {
+      font-size: 38px;
+      line-height: 1.2;
+      letter-spacing: -2px;
+    }
+
+    .about-text {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 2.1;
+    }
+
+    .about-text p + p {
+      margin-top: 20px;
+    }
+
+
+    /* =========================
+       FEATURES
+    ========================== */
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+    }
+
+    .feature {
+      border: 1px solid var(--border);
+      padding: 28px;
+      background: var(--bg-soft);
+    }
+
+    .feature-number {
+      color: var(--orange);
+      font-size: 11px;
+    }
+
+    .feature h3 {
+      margin: 15px 0 10px;
+      font-size: 18px;
+    }
+
+    .feature p {
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 2;
+    }
+
+
+    /* =========================
+       FAQ
+    ========================== */
+
+    .faq {
+      max-width: 850px;
+    }
+
+    details {
+      border-top: 1px solid var(--border);
+      padding: 22px 0;
+    }
+
+    details:last-child {
+      border-bottom: 1px solid var(--border);
+    }
+
+    summary {
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    details p {
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 2;
+      padding-top: 16px;
+    }
+
+
+    /* =========================
+       FOOTER
+    ========================== */
+
+    footer {
+      padding: 50px 0 30px;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 50px;
+      padding-bottom: 45px;
+    }
+
+    .footer-brand {
+      max-width: 420px;
+    }
+
+    .footer-brand h2 {
+      font-size: 24px;
+      margin-bottom: 15px;
+    }
+
+    .footer-brand p {
+      color: var(--muted);
+      font-size: 11px;
+      line-height: 2;
+    }
+
+    .footer-column h3 {
+      font-size: 11px;
+      color: var(--cyan);
+      margin-bottom: 18px;
+      letter-spacing: 1px;
+    }
+
+    .footer-column a {
+      display: block;
+      color: var(--muted);
+      font-size: 11px;
+      margin-bottom: 10px;
+    }
+
+    .footer-column a:hover {
+      color: var(--cyan);
+    }
+
+    .social-link {
+      display: inline-block !important;
+      margin-right: 15px;
+    }
+
+    .copyright {
+      border-top: 1px solid var(--border);
+      padding-top: 25px;
+      color: #64747c;
+      font-size: 10px;
+    }
+
+
+    /* =========================
+       RESPONSIVE
+    ========================== */
+
+    @media (max-width: 850px) {
+
+      .grid-3 {
+        grid-template-columns: 1fr;
+      }
+
+      .about-grid {
+        grid-template-columns: 1fr;
+        gap: 35px;
+      }
+
+      .feature-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      nav {
+        display: none;
+      }
+
+    }
+
+    @media (max-width: 550px) {
+
+      .container {
+        width: min(100% - 28px, var(--max-width));
+      }
+
+      .hero {
+        padding: 75px 0 60px;
+      }
+
+      .hero h1 {
+        font-size: 42px;
+        letter-spacing: -2px;
+      }
+
+      section {
+        padding: 65px 0;
+      }
+
+      .blueprint-card {
+        padding: 12px;
+      }
+
+      .stair-draw {
+        min-height: auto;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 35px;
+      }
+
+    }
+
+  </style>
+
 </head>
+
+
 <body>
 
-<header class="titleblock">
-  <div class="wrap tb-row">
-    <div class="tb-brand">
-      <svg class="tb-mark" viewBox="0 0 40 40" fill="none">
-        <rect x="1" y="1" width="38" height="38" stroke="#5fd4e0" stroke-width="1.4"/>
-        <path d="M7 30h6v-6h6v-6h6v-6h6" stroke="#c17845" stroke-width="2.4" stroke-linecap="square"/>
-      </svg>
-      <div class="tb-name">Artakan<span>ARTAKAN CO. — 3DS MAX PLUGINS</span></div>
-    </div>
-    <nav class="tb-nav">
-      <a href="/" class="active">Home</a>
-      <a href="/plugin/artakan-create-stairs">Create Stairs</a>
-      <a href="planto3d.html">PlanTo3D</a>
-      <a href="/plugin/artakan-architect-desktop">Architect Desktop</a>
-      <a href="/about">About</a>
-      <a href="mailto:info@cgsample.ir" class="tb-cta">Email us</a>
-    </nav>
-  </div>
-</header>
 
-<section class="hero">
-  <div class="wrap hero-grid">
-    <div>
-      <span class="eyebrow">// ARCHVIZ TOOLING · SINCE 2012</span>
-      <h1>Plugins that build architecture <em>step by step</em></h1>
-      <p class="lead">Artakan develops specialist 3ds Max plugins — from parametric stair and railing generation to turning a 2D floor plan into a full 3D building. Precise, lightweight, and built for real architectural office work.</p>
-      <div class="hero-actions">
-        <a href="/plugin/artakan-create-stairs" class="btn btn-primary">View Create Stairs</a>
-        <a href="mailto:info@cgsample.ir" class="btn btn-ghost">Email us to buy</a>
+  <!-- =========================
+       HEADER
+  ========================== -->
+
+  <header>
+
+    <div class="container nav">
+
+      <a
+        href="/"
+        class="logo"
+        aria-label="CGSample Home"
+      >
+        CG<span>Sample</span>
+      </a>
+
+      <nav aria-label="Main navigation">
+
+        <a href="#plugins">
+          Plugins
+        </a>
+
+        <a href="#tools">
+          Tools
+        </a>
+
+        <a href="#about">
+          About
+        </a>
+
+        <a href="#faq">
+          FAQ
+        </a>
+
+      </nav>
+
+    </div>
+
+  </header>
+
+
+  <main>
+
+
+    <!-- =========================
+         HERO
+    ========================== -->
+
+    <section class="hero">
+
+      <div class="container">
+
+        <span class="eyebrow">
+          CGSAMPLE / 3D ARCHITECTURE TOOLS
+        </span>
+
+        <h1>
+          Tools for
+          <span>3D Architecture.</span>
+        </h1>
+
+        <p class="hero-description">
+          CGSample develops professional plugins and tools for Autodesk
+          3ds Max, helping architects, interior designers and 3D artists
+          build, calculate and manage architectural models faster.
+        </p>
+
+        <div class="hero-actions">
+
+          <a
+            href="#plugins"
+            class="btn btn-primary"
+          >
+            Explore Plugins
+          </a>
+
+          <a
+            href="#about"
+            class="btn btn-secondary"
+          >
+            About CGSample
+          </a>
+
+        </div>
+
       </div>
-    </div>
 
-    <div class="blueprint-card">
-      <span class="tag">FIG. 01 — STAIR SECTION</span>
-      <svg class="stair-draw" viewBox="0 0 420 300" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M40 250 H90 V210 H140 V170 H190 V130 H240 V90 H290" stroke="#5fd4e0" stroke-width="2.4" stroke-linecap="square"/>
-        <path d="M40 250 L60 262 M90 250 L90 262 M140 210 L140 262 M190 170 L190 262 M240 130 L240 262 M290 90 L290 262" stroke="#294455" stroke-width="1"/>
-        <path d="M50 240 L290 78" stroke="#c17845" stroke-width="2"/>
-        <line x1="50" y1="240" x2="50" y2="220" stroke="#c17845" stroke-width="2"/>
-        <line x1="90" y1="200" x2="90" y2="180" stroke="#c17845" stroke-width="2"/>
-        <line x1="140" y1="160" x2="140" y2="140" stroke="#c17845" stroke-width="2"/>
-        <line x1="190" y1="120" x2="190" y2="100" stroke="#c17845" stroke-width="2"/>
-        <line x1="240" y1="80" x2="240" y2="60" stroke="#c17845" stroke-width="2"/>
-        <line x1="40" y1="272" x2="290" y2="272" stroke="#5fd4e0" stroke-width="1"/>
-        <line x1="40" y1="266" x2="40" y2="278" stroke="#5fd4e0" stroke-width="1"/>
-        <line x1="290" y1="266" x2="290" y2="278" stroke="#5fd4e0" stroke-width="1"/>
-        <text class="dim-text" x="130" y="290" fill="#5fd4e0" font-family="JetBrains Mono, monospace" font-size="11">RUN 280mm × 6</text>
-        <text class="dim-text" x="300" y="70" fill="#5fd4e0" font-family="JetBrains Mono, monospace" font-size="11">RISE 180mm</text>
-        <text class="dim-text" x="150" y="115" fill="#e0955f" font-family="JetBrains Mono, monospace" font-size="11">∠ RAIL 32°</text>
-      </svg>
-    </div>
-  </div>
-</section>
+    </section>
 
-<section>
-  <div class="wrap">
-    <div class="dim"><span class="dim-label">PRODUCTS · 03 ACTIVE PLUGINS</span></div>
-    <div class="section-head">
-      <h2>Artakan plugins</h2>
-      <p>Each plugin is built for one clear stage of the architectural modeling process — from floor plan to construction detail.</p>
-    </div>
 
-    <div class="grid-3">
-      <div class="card">
-        <span class="num">PLUGIN / 01</span>
-        <h3>Create Stairs</h3>
-        <p>Parametric stairs, railings and handrails with full control over height, width, material and turn. Works directly inside 3ds Max.</p>
-        <span class="status">● ACTIVE — v3</span>
-        <a href="/plugin/artakan-create-stairs" class="card-link">View plugin →</a>
+    <!-- =========================
+         STAIR SECTION
+    ========================== -->
+
+    <section
+      id="tools"
+      aria-labelledby="tools-title"
+    >
+
+      <div class="container">
+
+        <div class="section-header">
+
+          <span class="eyebrow">
+            ARTAKAN / ARCHITECTURE WORKFLOW
+          </span>
+
+          <h2 id="tools-title">
+            Architectural Tools for 3ds Max
+          </h2>
+
+          <p class="section-description">
+            CGSample tools are designed to simplify repetitive architectural
+            tasks inside Autodesk 3ds Max, from parametric staircase modeling
+            to floor-plan conversion and architectural calculations.
+          </p>
+
+        </div>
+
+
+        <div class="blueprint-card">
+
+          <span class="tag">
+            FIG. 01 — STAIR SECTION
+          </span>
+
+          <svg
+            class="stair-draw"
+            viewBox="0 0 420 300"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            role="img"
+            aria-labelledby="stair-drawing-title stair-drawing-desc"
+          >
+
+            <title id="stair-drawing-title">
+              Parametric staircase section drawing
+            </title>
+
+            <desc id="stair-drawing-desc">
+              Technical staircase section showing six steps,
+              a 280 millimeter run, a 180 millimeter rise and
+              a 32 degree railing angle.
+            </desc>
+
+            <path
+              d="M40 250 H90 V210 H140 V170 H190 V130 H240 V90 H290"
+              stroke="#5fd4e0"
+              stroke-width="2.4"
+              stroke-linecap="square"
+            />
+
+            <path
+              d="M40 250 L60 262
+                 M90 250 L90 262
+                 M140 210 L140 262
+                 M190 170 L190 262
+                 M240 130 L240 262
+                 M290 90 L290 262"
+              stroke="#294455"
+              stroke-width="1"
+            />
+
+            <path
+              d="M50 240 L290 78"
+              stroke="#c17845"
+              stroke-width="2"
+            />
+
+            <line
+              x1="50"
+              y1="240"
+              x2="50"
+              y2="220"
+              stroke="#c17845"
+              stroke-width="2"
+            />
+
+            <line
+              x1="90"
+              y1="200"
+              x2="90"
+              y2="180"
+              stroke="#c17845"
+              stroke-width="2"
+            />
+
+            <line
+              x1="140"
+              y1="160"
+              x2="140"
+              y2="140"
+              stroke="#c17845"
+              stroke-width="2"
+            />
+
+            <line
+              x1="190"
+              y1="120"
+              x2="190"
+              y2="100"
+              stroke="#c17845"
+              stroke-width="2"
+            />
+
+            <line
+              x1="240"
+              y1="80"
+              x2="240"
+              y2="60"
+              stroke="#c17845"
+              stroke-width="2"
+            />
+
+            <line
+              x1="40"
+              y1="272"
+              x2="290"
+              y2="272"
+              stroke="#5fd4e0"
+              stroke-width="1"
+            />
+
+            <line
+              x1="40"
+              y1="266"
+              x2="40"
+              y2="278"
+              stroke="#5fd4e0"
+              stroke-width="1"
+            />
+
+            <line
+              x1="290"
+              y1="266"
+              x2="290"
+              y2="278"
+              stroke="#5fd4e0"
+              stroke-width="1"
+            />
+
+            <text
+              class="dim-text"
+              x="130"
+              y="290"
+              fill="#5fd4e0"
+              font-size="11"
+            >
+              RUN 280mm × 6
+            </text>
+
+            <text
+              class="dim-text"
+              x="300"
+              y="70"
+              fill="#5fd4e0"
+              font-size="11"
+            >
+              RISE 180mm
+            </text>
+
+            <text
+              class="dim-text"
+              x="150"
+              y="115"
+              fill="#e0955f"
+              font-size="11"
+            >
+              ∠ RAIL 32°
+            </text>
+
+          </svg>
+
+        </div>
+
       </div>
-      <div class="card">
-        <span class="num">PLUGIN / 02</span>
-        <h3>PlanTo3D</h3>
-        <p>Turns a 2D floor plan into a 3D building model; walls, openings and floors are generated automatically.</p>
-        <span class="status">● ACTIVE — v1.00</span>
-        <a href="planto3d.html" class="card-link">View plugin →</a>
-      </div>
-      <div class="card">
-        <span class="num">PLUGIN / 03</span>
-        <h3>Architect Desktop</h3>
-        <p>A toolkit of calculation utilities for architects: room perimeter, façade area, glazing and floor area for faster client delivery.</p>
-        <span class="status">● ACTIVE — v2</span>
-        <a href="/plugin/artakan-architect-desktop" class="card-link">View plugin →</a>
-      </div>
-    </div>
-  </div>
-</section>
 
-<section>
-  <div class="wrap">
-    <div class="cta-band">
-      <div>
-        <h3>New domain, same plugins.</h3>
-        <p>The old store is no longer available. To buy or ask a question about any plugin, just send us an email.</p>
-      </div>
-      <a href="mailto:info@cgsample.ir" class="btn btn-primary">info@cgsample.ir</a>
-    </div>
-  </div>
-</section>
+    </section>
 
-<footer>
-  <div class="wrap foot-row">
-    <span class="mono">ARTAKAN CO. — SHEET 01/05 — CGSAMPLE.IR</span>
-    <div class="foot-links">
-      <a href="about.html">About</a>
-      <a href="https://www.scriptspot.com/3ds-max/scripts/create-stairs">ScriptSpot</a>
-      <a href="mailto:info@cgsample.ir">info@cgsample.ir</a>
+
+    <!-- =========================
+         PLUGINS
+    ========================== -->
+
+    <section
+      id="plugins"
+      aria-labelledby="plugins-title"
+    >
+
+      <div class="container">
+
+        <div class="section-header">
+
+          <span class="eyebrow">
+            CGSAMPLE / 3DS MAX PLUGINS
+          </span>
+
+          <h2 id="plugins-title">
+            Professional 3ds Max Plugins
+          </h2>
+
+          <p class="section-description">
+            Explore CGSample's collection of Autodesk 3ds Max plugins
+            created for architectural modeling, staircase generation,
+            floor-plan conversion and design calculations.
+          </p>
+
+        </div>
+
+
+        <div class="grid-3">
+
+
+          <!-- CREATE STAIRS -->
+
+          <article class="card">
+
+            <span class="num">
+              PLUGIN / 01
+            </span>
+
+            <h3>
+              <a href="/plugin/artakan-create-stairs">
+                Artakan Create Stairs
+              </a>
+            </h3>
+
+            <p>
+              Artakan Create Stairs is a parametric staircase plugin
+              for Autodesk 3ds Max. Create custom stairs, railings
+              and handrails with control over height, width, steps,
+              materials and turning direction.
+            </p>
+
+            <div class="plugin-meta">
+
+              <span
+                class="status"
+                aria-label="Plugin status: active"
+              >
+                ● ACTIVE
+              </span>
+
+              <span class="version">
+                Version 3
+              </span>
+
+            </div>
+
+            <a
+              href="/plugin/artakan-create-stairs"
+              class="card-link"
+              aria-label="View Artakan Create Stairs"
+            >
+              View Artakan Create Stairs →
+            </a>
+
+          </article>
+
+
+          <!-- PLANTO3D -->
+
+          <article class="card">
+
+            <span class="num">
+              PLUGIN / 02
+            </span>
+
+            <h3>
+              <a href="/plugin/planto3d">
+                PlanTo3D
+              </a>
+            </h3>
+
+            <p>
+              PlanTo3D converts a 2D architectural floor plan into
+              a 3D building model inside Autodesk 3ds Max. Generate
+              walls, openings and floors automatically to accelerate
+              architectural modeling.
+            </p>
+
+            <div class="plugin-meta">
+
+              <span
+                class="status"
+                aria-label="Plugin status: active"
+              >
+                ● ACTIVE
+              </span>
+
+              <span class="version">
+                Version 1.00
+              </span>
+
+            </div>
+
+            <a
+              href="/plugin/planto3d"
+              class="card-link"
+              aria-label="View PlanTo3D"
+            >
+              View PlanTo3D →
+            </a>
+
+          </article>
+
+
+          <!-- ARCHITECT DESKTOP -->
+
+          <article class="card">
+
+            <span class="num">
+              PLUGIN / 03
+            </span>
+
+            <h3>
+              <a href="/plugin/artakan-architect-desktop">
+                Artakan Architect Desktop
+              </a>
+            </h3>
+
+            <p>
+              Artakan Architect Desktop is an architectural
+              calculation toolkit for Autodesk 3ds Max. Calculate
+              room perimeter, facade area, glazing area and floor
+              area directly inside your 3D workflow.
+            </p>
+
+            <div class="plugin-meta">
+
+              <span
+                class="status"
+                aria-label="Plugin status: active"
+              >
+                ● ACTIVE
+              </span>
+
+              <span class="version">
+                Version 2
+              </span>
+
+            </div>
+
+            <a
+              href="/plugin/artakan-architect-desktop"
+              class="card-link"
+              aria-label="View Artakan Architect Desktop"
+            >
+              View Artakan Architect Desktop →
+            </a>
+
+          </article>
+
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         WHY CGSAMPLE
+    ========================== -->
+
+    <section aria-labelledby="workflow-title">
+
+      <div class="container">
+
+        <div class="section-header">
+
+          <span class="eyebrow">
+            CGSAMPLE / WORKFLOW
+          </span>
+
+          <h2 id="workflow-title">
+            Built for Real Architectural Workflows
+          </h2>
+
+          <p class="section-description">
+            The goal is simple: reduce repetitive modeling and calculation
+            tasks so architects and 3D artists can spend more time designing.
+          </p>
+
+        </div>
+
+
+        <div class="feature-grid">
+
+          <article class="feature">
+
+            <span class="feature-number">
+              01 / PARAMETRIC MODELING
+            </span>
+
+            <h3>
+              Faster 3D Modeling
+            </h3>
+
+            <p>
+              Build frequently used architectural elements with
+              adjustable parameters instead of creating every element
+              manually from scratch.
+            </p>
+
+          </article>
+
+
+          <article class="feature">
+
+            <span class="feature-number">
+              02 / ARCHITECTURAL TOOLS
+            </span>
+
+            <h3>
+              Practical Design Utilities
+            </h3>
+
+            <p>
+              Perform common architectural calculations and modeling
+              operations directly inside Autodesk 3ds Max.
+            </p>
+
+          </article>
+
+
+          <article class="feature">
+
+            <span class="feature-number">
+              03 / 3DS MAX INTEGRATION
+            </span>
+
+            <h3>
+              Work Inside Your Existing Workflow
+            </h3>
+
+            <p>
+              CGSample plugins are designed to work within the
+              3ds Max environment instead of forcing designers
+              to switch between multiple applications.
+            </p>
+
+          </article>
+
+
+          <article class="feature">
+
+            <span class="feature-number">
+              04 / PRODUCTIVITY
+            </span>
+
+            <h3>
+              Less Repetitive Work
+            </h3>
+
+            <p>
+              Automate repetitive architectural tasks and keep
+              commonly used operations accessible from your
+              3D modeling workflow.
+            </p>
+
+          </article>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         ABOUT
+    ========================== -->
+
+    <section
+      id="about"
+      aria-labelledby="about-title"
+    >
+
+      <div class="container">
+
+        <div class="about-grid">
+
+          <div>
+
+            <span class="eyebrow">
+              ABOUT / CGSAMPLE
+            </span>
+
+            <h2 id="about-title">
+              Software for Architects and 3D Artists
+            </h2>
+
+          </div>
+
+
+          <div class="about-text">
+
+            <p>
+              CGSample develops digital tools for architectural
+              visualization and 3D modeling. The products are
+              focused on practical problems that architects,
+              designers and 3D artists encounter during everyday work.
+            </p>
+
+            <p>
+              From parametric stair generation to architectural
+              calculations and floor-plan modeling, the goal is to
+              turn repetitive operations into faster and more
+              manageable workflows inside Autodesk 3ds Max.
+            </p>
+
+            <p>
+              CGSample products are developed with a focus on
+              usability, speed and practical architectural workflows.
+            </p>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         FAQ
+    ========================== -->
+
+    <section
+      id="faq"
+      aria-labelledby="faq-title"
+    >
+
+      <div class="container">
+
+        <div class="section-header">
+
+          <span class="eyebrow">
+            QUESTIONS / ANSWERS
+          </span>
+
+          <h2 id="faq-title">
+            Frequently Asked Questions
+          </h2>
+
+        </div>
+
+
+        <div class="faq">
+
+          <details>
+
+            <summary>
+              What is CGSample?
+            </summary>
+
+            <p>
+              CGSample is a software and digital tools brand focused
+              on Autodesk 3ds Max plugins and architectural workflows
+              for architects, designers and 3D artists.
+            </p>
+
+          </details>
+
+
+          <details>
+
+            <summary>
+              What is Artakan Create Stairs?
+            </summary>
+
+            <p>
+              Artakan Create Stairs is a parametric staircase plugin
+              for Autodesk 3ds Max that helps users create stairs,
+              railings and handrails with adjustable parameters.
+            </p>
+
+          </details>
+
+
+          <details>
+
+            <summary>
+              What does PlanTo3D do?
+            </summary>
+
+            <p>
+              PlanTo3D is designed to convert 2D architectural floor
+              plans into 3D building elements such as walls, openings
+              and floors inside Autodesk 3ds Max.
+            </p>
+
+          </details>
+
+
+          <details>
+
+            <summary>
+              Who are CGSample plugins for?
+            </summary>
+
+            <p>
+              CGSample plugins are designed primarily for architects,
+              interior designers, architectural visualization artists,
+              3D modelers and other Autodesk 3ds Max users.
+            </p>
+
+          </details>
+
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+  </main>
+
+
+  <!-- =========================
+       FOOTER
+  ========================== -->
+
+  <footer>
+
+    <div class="container">
+
+      <div class="footer-grid">
+
+
+        <div class="footer-brand">
+
+          <h2>
+            CG<span style="color:#5fd4e0;">Sample</span>
+          </h2>
+
+          <p>
+            Professional 3ds Max plugins and architectural tools
+            for architects, designers and 3D artists.
+          </p>
+
+        </div>
+
+
+        <div class="footer-column">
+
+          <h3>
+            PRODUCTS
+          </h3>
+
+          <a href="/plugin/artakan-create-stairs">
+            Artakan Create Stairs
+          </a>
+
+          <a href="/plugin/planto3d">
+            PlanTo3D
+          </a>
+
+          <a href="/plugin/artakan-architect-desktop">
+            Architect Desktop
+          </a>
+
+        </div>
+
+
+        <div class="footer-column">
+
+          <h3>
+            SOCIAL
+          </h3>
+
+          <a
+            href="https://www.instagram.com/cgsample/"
+            class="social-link"
+            aria-label="CGSample on Instagram"
+            rel="noopener"
+          >
+            Instagram
+          </a>
+
+        </div>
+
+
+      </div>
+
+
+      <div class="copyright">
+
+        © 2026 CGSample. All rights reserved.
+
+      </div>
+
     </div>
-  </div>
-</footer>
+
+  </footer>
+
+
+  <!-- =========================
+       FAQ STRUCTURED DATA
+  ========================== -->
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is CGSample?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "CGSample is a software and digital tools brand focused on Autodesk 3ds Max plugins and architectural workflows for architects, designers and 3D artists."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is Artakan Create Stairs?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Artakan Create Stairs is a parametric staircase plugin for Autodesk 3ds Max that helps users create stairs, railings and handrails with adjustable parameters."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What does PlanTo3D do?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "PlanTo3D is designed to convert 2D architectural floor plans into 3D building elements such as walls, openings and floors inside Autodesk 3ds Max."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Who are CGSample plugins for?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "CGSample plugins are designed primarily for architects, interior designers, architectural visualization artists, 3D modelers and other Autodesk 3ds Max users."
+        }
+      }
+    ]
+  }
+  </script>
+
 
 </body>
 </html>
