@@ -1,147 +1,1589 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Architect Desktop | Artakan</title>
-<meta name="description" content="Artakan Architect Desktop — calculation utilities for architects: perimeter, façade, glazing and floor area.">
-<link rel="icon" href="../assets/favicon.ico" sizes="any">
-<link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32.png">
-<link rel="apple-touch-icon" sizes="180x180" href="../assets/favicon-180.png">
-<link rel="stylesheet" href="/assets/style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Architect Desktop — 3ds Max Architecture Plugin | CGSample</title>
+  <meta name="description" content="Architect Desktop is a 3ds Max plugin for architects that provides fast tools for room perimeter, floor area, façade area and glazing calculations directly inside 3ds Max.">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <meta name="author" content="CGSample">
+  <meta name="theme-color" content="#0b1116">
+
+  <link rel="canonical" href="https://cgsample.ir/plugin/artakan-architect-desktop">
+
+  <link rel="icon" href="../assets/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="../assets/favicon-180.png">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="CGSample">
+  <meta property="og:title" content="Architect Desktop — 3ds Max Architecture Plugin">
+  <meta property="og:description" content="Architectural measurement and calculation tools for 3ds Max. Calculate room perimeter, floor area, façade area and glazing directly from your 3D model.">
+  <meta property="og:url" content="https://cgsample.ir/plugin/artakan-architect-desktop">
+  <meta property="og:image" content="https://cgsample.ir/assets/architect-desktop-box.png">
+  <meta property="og:image:alt" content="Architect Desktop 3ds Max plugin by CGSample">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Architect Desktop — 3ds Max Architecture Plugin">
+  <meta name="twitter:description" content="Architectural measurement and calculation tools for 3ds Max.">
+  <meta name="twitter:image" content="https://cgsample.ir/assets/architect-desktop-box.png">
+
+  <!-- Software Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Architect Desktop",
+    "alternateName": "Artakan Architect Desktop",
+    "applicationCategory": "DesignApplication",
+    "applicationSubCategory": "3D Architecture Plugin",
+    "operatingSystem": "Windows",
+    "softwareVersion": "2.0",
+    "description": "Architect Desktop is a 3ds Max plugin for architects that provides tools for calculating room perimeter, floor area, façade area and glazing area directly inside 3ds Max.",
+    "url": "https://cgsample.ir/plugin/artakan-architect-desktop",
+    "image": "https://cgsample.ir/assets/architect-desktop-box.png",
+    "creator": {
+      "@type": "Organization",
+      "name": "CGSample",
+      "url": "https://cgsample.ir/"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "CGSample",
+      "url": "https://cgsample.ir/"
+    }
+  }
+  </script>
+
+  <!-- Organization Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "CGSample",
+    "url": "https://cgsample.ir/",
+    "sameAs": [
+      "https://www.instagram.com/cgsample/"
+    ]
+  }
+  </script>
+
+
+  <style>
+    :root {
+      --bg: #080d11;
+      --bg-soft: #0c1318;
+      --panel: #0d161c;
+      --panel-2: #101b22;
+      --line: #24343e;
+      --line-soft: #18262e;
+      --cyan: #5fd4e0;
+      --cyan-soft: rgba(95,212,224,.12);
+      --orange: #c17845;
+      --orange-light: #e0955f;
+      --text: #e5edf0;
+      --muted: #8999a2;
+      --muted-2: #64747d;
+      --white: #f3f7f8;
+      --max: 1180px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background:
+        radial-gradient(circle at 80% 10%, rgba(95,212,224,.055), transparent 30%),
+        radial-gradient(circle at 10% 70%, rgba(193,120,69,.035), transparent 28%),
+        var(--bg);
+      color: var(--text);
+      font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.65;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: .025;
+      background-image:
+        linear-gradient(rgba(255,255,255,.5) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.5) 1px, transparent 1px);
+      background-size: 70px 70px;
+      mask-image: linear-gradient(to bottom, black, transparent 80%);
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    .wrap {
+      width: min(calc(100% - 48px), var(--max));
+      margin: 0 auto;
+    }
+
+
+    /* =========================================
+       HEADER
+    ========================================= */
+
+    .titleblock {
+      border-bottom: 1px solid var(--line);
+      background: rgba(8,13,17,.92);
+      backdrop-filter: blur(14px);
+      position: sticky;
+      top: 0;
+      z-index: 50;
+    }
+
+    .tb-row {
+      min-height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 30px;
+    }
+
+    .logo {
+      font-size: 22px;
+      font-weight: 800;
+      letter-spacing: -.8px;
+      color: var(--white);
+      white-space: nowrap;
+    }
+
+    .logo span {
+      color: var(--cyan);
+    }
+
+    .tb-nav {
+      display: flex;
+      align-items: center;
+      gap: 25px;
+      font-family: "JetBrains Mono", "SFMono-Regular", Consolas, monospace;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+    }
+
+    .tb-nav a {
+      color: var(--muted);
+      transition: .2s ease;
+    }
+
+    .tb-nav a:hover,
+    .tb-nav a.active {
+      color: var(--cyan);
+    }
+
+    .tb-cta {
+      border: 1px solid var(--cyan);
+      color: var(--cyan) !important;
+      padding: 9px 13px;
+    }
+
+    .tb-cta:hover {
+      background: var(--cyan-soft);
+    }
+
+
+    /* =========================================
+       HERO
+    ========================================= */
+
+    .hero {
+      min-height: 690px;
+      display: flex;
+      align-items: center;
+      border-bottom: 1px solid var(--line);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::after {
+      content: "ARCHITECT DESKTOP / 03";
+      position: absolute;
+      right: -30px;
+      bottom: 70px;
+      font-family: "JetBrains Mono", monospace;
+      font-size: 10px;
+      letter-spacing: .18em;
+      color: #17262e;
+      transform: rotate(-90deg);
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.05fr .95fr;
+      gap: 70px;
+      align-items: center;
+    }
+
+    .eyebrow,
+    .dim-label,
+    .num,
+    .status,
+    .mono,
+    .video-meta,
+    .spec-label {
+      font-family: "JetBrains Mono", "SFMono-Regular", Consolas, monospace;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      color: var(--orange-light);
+      font-size: 11px;
+      letter-spacing: .12em;
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      color: var(--white);
+      font-size: clamp(58px, 8vw, 104px);
+      line-height: .92;
+      letter-spacing: -5px;
+      font-weight: 700;
+      margin-bottom: 28px;
+    }
+
+    h1 em {
+      color: var(--cyan);
+      font-style: normal;
+    }
+
+    .lead {
+      max-width: 650px;
+      color: #9aaab2;
+      font-size: 17px;
+      line-height: 1.8;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 34px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 46px;
+      padding: 0 19px;
+      font-family: "JetBrains Mono", monospace;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: .07em;
+      transition: .2s ease;
+    }
+
+    .btn-primary {
+      background: var(--cyan);
+      color: #071014;
+      border: 1px solid var(--cyan);
+      font-weight: 700;
+    }
+
+    .btn-primary:hover {
+      background: #83e4ec;
+      border-color: #83e4ec;
+    }
+
+    .btn-ghost {
+      border: 1px solid var(--line);
+      color: var(--muted);
+    }
+
+    .btn-ghost:hover {
+      border-color: var(--cyan);
+      color: var(--cyan);
+    }
+
+
+    /* =========================================
+       PRODUCT VISUAL
+    ========================================= */
+
+    .shot {
+      position: relative;
+      border: 1px solid var(--line);
+      background:
+        linear-gradient(135deg, rgba(95,212,224,.035), transparent 50%),
+        var(--panel);
+      padding: 20px;
+    }
+
+    .shot::before {
+      content: "CGSAMPLE / SOFTWARE";
+      position: absolute;
+      top: 9px;
+      left: 13px;
+      font-family: "JetBrains Mono", monospace;
+      font-size: 8px;
+      letter-spacing: .14em;
+      color: var(--muted-2);
+    }
+
+    .shot::after {
+      content: "FIG. 03";
+      position: absolute;
+      right: 13px;
+      top: 9px;
+      font-family: "JetBrains Mono", monospace;
+      font-size: 8px;
+      color: var(--cyan);
+    }
+
+.floor-plan {
+  width: 100%;
+  height: auto;
+  display: block;
+  background: #0a1116;
+  border: 1px solid var(--line-soft);
+}
+
+/* Blueprint grid */
+.plan-grid {
+  stroke: #17262e;
+  stroke-width: .6;
+  opacity: .55;
+}
+
+/* Main walls */
+.plan-walls {
+  stroke: #5fd4e0;
+  stroke-width: 2;
+  stroke-linecap: square;
+  stroke-linejoin: miter;
+}
+
+/* Heavy external walls */
+.plan-heavy {
+  stroke: #8de4eb;
+  stroke-width: 4;
+  stroke-linecap: square;
+  fill: none;
+}
+
+/* Windows */
+.plan-windows {
+  stroke: #5fd4e0;
+  stroke-width: 7;
+  stroke-linecap: square;
+  opacity: .9;
+}
+
+/* Doors */
+.plan-doors {
+  stroke: #c17845;
+  stroke-width: 1.6;
+  fill: none;
+}
+
+/* Furniture */
+.plan-furniture {
+  stroke: #294455;
+  stroke-width: 1.5;
+  fill: rgba(95,212,224,.025);
+}
+
+/* Room labels */
+.plan-labels {
+  fill: #536873;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 9px;
+  letter-spacing: 1.5px;
+}
+
+/* Dimensions */
+.plan-dimensions {
+  stroke: #5fd4e0;
+  stroke-width: 1;
+  fill: none;
+}
+
+.plan-dimensions text {
+  fill: #5fd4e0;
+  stroke: none;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 10px;
+  letter-spacing: 1px;
+}
+
+/* Measurement points */
+.plan-markers {
+  fill: #e0955f;
+  stroke: #0a1116;
+  stroke-width: 2;
+  animation: markerPulse 2s ease-in-out infinite;
+}
+
+@keyframes markerPulse {
+  0%, 100% {
+    opacity: .35;
+  }
+
+  50% {
+    opacity: 1;
+  }
+}
+
+/* Animated route */
+.plan-route {
+  stroke: #c17845;
+  stroke-width: 2;
+  stroke-dasharray: 7 8;
+  fill: none;
+  opacity: .9;
+  animation: routeMove 7s linear infinite;
+}
+
+@keyframes routeMove {
+  to {
+    stroke-dashoffset: -120;
+  }
+}
+
+/* Moving point */
+.plan-cursor {
+  fill: #e0955f;
+  stroke: #0a1116;
+  stroke-width: 3;
+  animation: cursorMove 7s linear infinite;
+}
+
+@keyframes cursorMove {
+  0% {
+    transform: translate(0, 0);
+  }
+
+  20% {
+    transform: translate(65px, 0);
+  }
+
+  42% {
+    transform: translate(185px, -130px);
+  }
+
+  65% {
+    transform: translate(355px, -175px);
+  }
+
+  84% {
+    transform: translate(435px, -235px);
+  }
+
+  100% {
+    transform: translate(475px, -235px);
+  }
+}
+
+/* Technical note */
+.plan-note {
+  stroke: #c17845;
+  stroke-width: 1;
+  fill: none;
+}
+
+.plan-note text {
+  stroke: none;
+  fill: #e0955f;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 9px;
+  letter-spacing: 1px;
+}
+
+/* Caption */
+.shot-caption {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  padding: 12px 2px 0;
+  color: #52656f;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 8px;
+  letter-spacing: .12em;
+}
+
+.shot-caption span:last-child {
+  color: #5fd4e0;
+}
+
+
+    /* =========================================
+       SECTIONS
+    ========================================= */
+
+    section:not(.hero) {
+      padding: 105px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .dim {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      margin-bottom: 30px;
+    }
+
+    .dim::after {
+      content: "";
+      height: 1px;
+      background: var(--line);
+      flex: 1;
+    }
+
+    .dim-label {
+      color: var(--cyan);
+      font-size: 10px;
+      letter-spacing: .14em;
+    }
+
+    .section-head {
+      display: grid;
+      grid-template-columns: .9fr 1.1fr;
+      gap: 70px;
+      margin-bottom: 55px;
+      align-items: end;
+    }
+
+    h2 {
+      color: var(--white);
+      font-size: clamp(36px, 5vw, 60px);
+      line-height: 1;
+      letter-spacing: -2.5px;
+      font-weight: 650;
+    }
+
+    .section-head > p {
+      max-width: 600px;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.85;
+    }
+
+
+    /* =========================================
+       FEATURES
+    ========================================= */
+
+    .feature-list {
+      border-top: 1px solid var(--line);
+    }
+
+    .feature {
+      display: grid;
+      grid-template-columns: 90px 1fr;
+      gap: 25px;
+      padding: 27px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .idx {
+      color: var(--orange-light);
+      font-family: "JetBrains Mono", monospace;
+      font-size: 11px;
+    }
+
+    h3 {
+      color: var(--white);
+      font-size: 21px;
+      line-height: 1.25;
+      margin-bottom: 8px;
+      font-weight: 600;
+    }
+
+    .feature p {
+      max-width: 700px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+
+    /* =========================================
+       CARDS
+    ========================================= */
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+
+    .card {
+      position: relative;
+      min-height: 290px;
+      padding: 27px;
+      border: 1px solid var(--line);
+      background: linear-gradient(145deg, rgba(255,255,255,.015), transparent);
+      transition: .25s ease;
+    }
+
+    .card:hover {
+      border-color: #38515d;
+      transform: translateY(-3px);
+    }
+
+    .num {
+      display: block;
+      color: var(--orange-light);
+      font-size: 10px;
+      letter-spacing: .1em;
+      margin-bottom: 55px;
+    }
+
+    .card p {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.8;
+    }
+
+    .status {
+      position: absolute;
+      bottom: 24px;
+      left: 27px;
+      color: var(--cyan);
+      font-size: 9px;
+      letter-spacing: .08em;
+    }
+
+
+    /* =========================================
+       TECHNICAL PANEL
+    ========================================= */
+
+    .technical {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      border: 1px solid var(--line);
+      background: var(--panel);
+    }
+
+    .tech-copy {
+      padding: 45px;
+      border-right: 1px solid var(--line);
+    }
+
+    .tech-copy p {
+      color: var(--muted);
+      margin-top: 20px;
+      font-size: 14px;
+      line-height: 1.9;
+    }
+
+    .tech-specs {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .spec {
+      padding: 30px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .spec:nth-child(odd) {
+      border-right: 1px solid var(--line);
+    }
+
+    .spec-label {
+      display: block;
+      color: var(--muted-2);
+      font-size: 9px;
+      letter-spacing: .12em;
+      margin-bottom: 10px;
+    }
+
+    .spec strong {
+      color: var(--white);
+      font-size: 15px;
+      font-weight: 500;
+    }
+
+
+    /* =========================================
+       VIDEO
+    ========================================= */
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+    }
+
+    .video-card {
+      display: block;
+      border: 1px solid var(--line);
+      background: var(--panel);
+      transition: .25s ease;
+    }
+
+    .video-card:hover {
+      border-color: #38515d;
+      transform: translateY(-3px);
+    }
+
+    .video-thumb {
+      position: relative;
+      aspect-ratio: 16 / 9;
+      overflow: hidden;
+      background: #060a0d;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .video-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: .75;
+      transition: .25s ease;
+    }
+
+    .video-card:hover .video-thumb img {
+      opacity: .95;
+    }
+
+    .video-play {
+      position: absolute;
+      inset: 0;
+      display: grid;
+      place-items: center;
+    }
+
+    .video-play svg {
+      width: 68px;
+      filter: drop-shadow(0 5px 20px rgba(0,0,0,.5));
+    }
+
+    .video-body {
+      padding: 21px;
+    }
+
+    .video-body h3 {
+      font-size: 16px;
+      margin-bottom: 18px;
+    }
+
+    .video-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 9px;
+      letter-spacing: .08em;
+    }
+
+    .src {
+      color: var(--orange-light);
+    }
+
+    .watch {
+      color: var(--cyan);
+    }
+
+
+    /* =========================================
+       CTA
+    ========================================= */
+
+    .cta-band {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 40px;
+      padding: 38px;
+      border: 1px solid var(--cyan);
+      background:
+        linear-gradient(90deg, rgba(95,212,224,.07), transparent);
+    }
+
+    .cta-band h2 {
+      font-size: 32px;
+      letter-spacing: -1.5px;
+    }
+
+    .cta-band p {
+      max-width: 650px;
+      margin-top: 10px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+
+    /* =========================================
+       FOOTER
+    ========================================= */
+
+    footer {
+      padding: 30px 0;
+      background: #060a0d;
+    }
+
+    .foot-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 25px;
+    }
+
+    .mono {
+      color: var(--muted-2);
+      font-size: 9px;
+      letter-spacing: .08em;
+    }
+
+    .foot-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      font-family: "JetBrains Mono", monospace;
+      font-size: 10px;
+    }
+
+    .foot-links a {
+      color: var(--muted);
+    }
+
+    .foot-links a:hover {
+      color: var(--cyan);
+    }
+
+
+    /* =========================================
+       MOBILE
+    ========================================= */
+
+    @media (max-width: 900px) {
+
+      .tb-row {
+        min-height: auto;
+        padding: 17px 0;
+        align-items: flex-start;
+      }
+
+      .tb-nav {
+        gap: 14px;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+      }
+
+      .hero {
+        min-height: auto;
+        padding: 90px 0;
+      }
+
+      .hero-grid {
+        grid-template-columns: 1fr;
+        gap: 50px;
+      }
+
+      h1 {
+        font-size: clamp(55px, 15vw, 90px);
+      }
+
+      .section-head {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+
+      .grid-3 {
+        grid-template-columns: 1fr;
+      }
+
+      .technical {
+        grid-template-columns: 1fr;
+      }
+
+      .tech-copy {
+        border-right: 0;
+        border-bottom: 1px solid var(--line);
+      }
+    }
+
+
+    @media (max-width: 650px) {
+
+      .wrap {
+        width: min(calc(100% - 28px), var(--max));
+      }
+
+      .titleblock {
+        position: relative;
+      }
+
+      .tb-row {
+        display: block;
+      }
+
+      .logo {
+        display: inline-block;
+        margin-bottom: 16px;
+      }
+
+      .tb-nav {
+        justify-content: flex-start;
+        font-size: 9px;
+        gap: 11px;
+      }
+
+      .tb-cta {
+        padding: 6px 8px;
+      }
+
+      .hero {
+        padding: 65px 0;
+      }
+
+      h1 {
+        font-size: 57px;
+        letter-spacing: -3px;
+      }
+
+      .lead {
+        font-size: 15px;
+      }
+
+      section:not(.hero) {
+        padding: 75px 0;
+      }
+
+      .feature {
+        grid-template-columns: 45px 1fr;
+        gap: 10px;
+      }
+
+      .grid-2 {
+        grid-template-columns: 1fr;
+      }
+
+      .technical {
+        display: block;
+      }
+
+      .tech-copy {
+        padding: 28px;
+      }
+
+      .tech-specs {
+        grid-template-columns: 1fr;
+      }
+
+      .spec {
+        border-right: 0 !important;
+      }
+
+      .cta-band {
+        display: block;
+        padding: 27px;
+      }
+
+      .cta-band .btn {
+        margin-top: 22px;
+        width: 100%;
+      }
+
+      .foot-row {
+        display: block;
+      }
+
+      .foot-links {
+        margin-top: 18px;
+      }
+    }
+  </style>
 </head>
+
+
 <body>
 
 <header class="titleblock">
   <div class="wrap tb-row">
-    <div class="tb-brand">
-      <svg class="tb-mark" viewBox="0 0 40 40" fill="none">
-        <rect x="1" y="1" width="38" height="38" stroke="#5fd4e0" stroke-width="1.4"/>
-        <path d="M7 30h6v-6h6v-6h6v-6h6" stroke="#c17845" stroke-width="2.4" stroke-linecap="square"/>
-      </svg>
-      <div class="tb-name">Artakan<span>ARTAKAN CO. — 3DS MAX PLUGINS</span></div>
-    </div>
-    <nav class="tb-nav">
+
+    <a href="/" class="logo" aria-label="CGSample Home">CG<span>Sample</span></a>
+
+    <nav class="tb-nav" aria-label="Main navigation">
       <a href="/">Home</a>
       <a href="/plugin/artakan-create-stairs">Create Stairs</a>
-      <a href="/plugin/artakan-planto3d">PlanTo3D</a>
-      <a href="/plugin/artakan-architect-desktop" class="active">Architect Desktop</a>
+      <a href="/plugin/planto3d">PlanTo3D</a>
+      <a href="/plugin/artakan-architect-desktop" class="active" aria-current="page">Architect Desktop</a>
       <a href="/about">About</a>
       <a href="mailto:info@cgsample.ir" class="tb-cta">Email us</a>
     </nav>
+
   </div>
 </header>
 
-<section class="hero">
-  <div class="wrap hero-grid">
-    <div>
-      <span class="eyebrow">// PLUGIN 03 · v2.00 · MAXSCRIPT</span>
-      <h1>Architect <em>Desktop</em></h1>
-      <p class="lead">A toolkit of measurement and calculation utilities for architects working in 3ds Max. Get perimeter, façade, glazing and floor-area figures straight from your model — no manual takeoffs, no separate spreadsheet.</p>
-      <div class="hero-actions">
-        <a href="mailto:info@cgsample.ir?subject=Buy Architect Desktop plugin" class="btn btn-primary">Buy — email us</a>
-        <a href="https://www.scriptspot.com/3ds-max/scripts/artakan-architect-desktop" class="btn btn-ghost">ScriptSpot page</a>
-      </div>
-    </div>
 
-    <div class="blueprint-card">
-      <span class="tag">FIG. 03 — AREA TAKEOFF</span>
-      <svg class="stair-draw" viewBox="0 0 420 300" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <rect x="60" y="70" width="240" height="160" stroke="#5fd4e0" stroke-width="2"/>
-        <line x1="60" y1="150" x2="300" y2="150" stroke="#294455" stroke-width="1"/>
-        <line x1="180" y1="70" x2="180" y2="230" stroke="#294455" stroke-width="1"/>
-        <rect x="100" y="100" width="50" height="30" stroke="#c17845" stroke-width="1.6"/>
-        <rect x="220" y="170" width="50" height="30" stroke="#c17845" stroke-width="1.6"/>
-        <line x1="60" y1="248" x2="300" y2="248" stroke="#5fd4e0" stroke-width="1"/>
-        <line x1="60" y1="242" x2="60" y2="254" stroke="#5fd4e0" stroke-width="1"/>
-        <line x1="300" y1="242" x2="300" y2="254" stroke="#5fd4e0" stroke-width="1"/>
-        <text class="dim-text" x="128" y="264" fill="#5fd4e0" font-family="JetBrains Mono, monospace" font-size="11">PERIMETER 48.2m</text>
-        <text class="dim-text" x="220" y="95" fill="#e0955f" font-family="JetBrains Mono, monospace" font-size="11">GLAZING 12.6m²</text>
-      </svg>
-    </div>
-  </div>
-</section>
+<main>
 
-<section>
-  <div class="wrap">
-    <div class="dim"><span class="dim-label">SPECIFICATIONS</span></div>
-    <div class="section-head">
-      <h2>What it calculates</h2>
-      <p>Architect Desktop reads geometry directly from your scene, so figures update as the design changes.</p>
-    </div>
-    <div class="feature-list">
-      <div class="feature">
-        <span class="idx">01</span>
-        <div><h4>Room perimeter</h4><p>Select a room or hall and get its perimeter instantly, for skirting and finishing takeoffs.</p></div>
-      </div>
-      <div class="feature">
-        <span class="idx">02</span>
-        <div><h4>Façade area</h4><p>Measure the area of a façade, including openings, straight from the model.</p></div>
-      </div>
-      <div class="feature">
-        <span class="idx">03</span>
-        <div><h4>Glazing area</h4><p>Total glass area across selected windows, useful for energy and cost estimates.</p></div>
-      </div>
-      <div class="feature">
-        <span class="idx">04</span>
-        <div><h4>Floor area</h4><p>Net floor area per room or across the whole plan, for client-facing area schedules.</p></div>
-      </div>
-      <div class="feature">
-        <span class="idx">05</span>
-        <div><h4>Export-ready figures</h4><p>Results are formatted for quick copy into reports or client proposals.</p></div>
-      </div>
-      <div class="feature">
-        <span class="idx">06</span>
-        <div><h4>Built for offices</h4><p>Made to speed up the quantity takeoffs architects do on every project.</p></div>
-      </div>
-    </div>
-  </div>
-</section>
+  <!-- HERO -->
 
-<section>
-  <div class="wrap">
-    <div class="dim"><span class="dim-label">TUTORIALS</span></div>
-    <div class="section-head">
-      <h2>See it in use</h2>
-      <p>Our own walkthrough of Architect Desktop, straight from the plugin's page.</p>
-    </div>
-    <div class="grid-2">
-      <a class="video-card" href="https://www.youtube.com/watch?v=cWl-rxpzDn8" target="_blank" rel="noopener">
-        <div class="video-thumb">
-          <img src="https://img.youtube.com/vi/cWl-rxpzDn8/hqdefault.jpg" alt="Thumbnail for the official Architect Desktop tutorial" loading="lazy">
-          <div class="video-play"><svg viewBox="0 0 68 48"><path d="M66.5 7.7c-.8-2.9-2.5-5.1-5.4-5.9C55.8 0 34 0 34 0S12.2 0 6.9 1.8C4 2.6 2.3 4.8 1.5 7.7 0 13 0 24 0 24s0 11 1.5 16.3c.8 2.9 2.5 5.1 5.4 5.9C12.2 48 34 48 34 48s21.8 0 27.1-1.8c2.9-.8 4.6-3 5.4-5.9C68 35 68 24 68 24s0-11-1.5-16.3z" fill="#c17845"/><path d="M45 24 27 14v20z" fill="#fff"/></svg></div>
-        </div>
-        <div class="video-body">
-          <h4>Artakan Architect Desktop — overview &amp; walkthrough</h4>
-          <div class="video-meta"><span class="src">OFFICIAL — CGSAMPLE</span><span class="watch">Watch ↗</span></div>
-        </div>
-      </a>
-    </div>
-  </div>
-</section>
+  <section class="hero">
+    <div class="wrap hero-grid">
 
-<section>
-  <div class="wrap">
-    <div class="cta-band">
       <div>
-        <h3>Want to get Architect Desktop?</h3>
-        <p>The online store is temporarily unavailable. For purchase, pricing or version compatibility, just email us.</p>
+
+        <span class="eyebrow">// PLUGIN 03 · v2.00 · 3DS MAX</span>
+
+        <h1>Architect <em>Desktop</em></h1>
+
+        <p class="lead">
+          A practical measurement toolkit for architects working inside 3ds Max.
+          Calculate room perimeter, floor area, façade area and glazing directly
+          from your architectural model.
+        </p>
+
+        <div class="hero-actions">
+
+          <a href="mailto:info@cgsample.ir?subject=Buy Architect Desktop plugin" class="btn btn-primary">
+            Buy — email us
+          </a>
+
+          <a href="#features" class="btn btn-ghost">
+            Explore features ↓
+          </a>
+
+        </div>
+
       </div>
-      <a href="mailto:info@cgsample.ir?subject=Buy Architect Desktop plugin" class="btn btn-primary">info@cgsample.ir</a>
-    </div>
+
+
+<div class="shot">
+  <svg class="floor-plan" viewBox="0 0 720 520" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="planTitle planDesc">
+    <title id="planTitle">Architectural floor plan</title>
+    <desc id="planDesc">Animated architectural floor plan showing rooms, walls, doors, windows and dimensions.</desc>
+
+    <!-- Background grid -->
+    <g class="plan-grid">
+      <path d="M40 0V520M80 0V520M120 0V520M160 0V520M200 0V520M240 0V520M280 0V520M320 0V520M360 0V520M400 0V520M440 0V520M480 0V520M520 0V520M560 0V520M600 0V520M640 0V520M680 0V520"/>
+      <path d="M0 40H720M0 80H720M0 120H720M0 160H720M0 200H720M0 240H720M0 280H720M0 320H720M0 360H720M0 400H720M0 440H720M0 480H720"/>
+    </g>
+
+    <!-- Main building outline -->
+    <g class="plan-walls">
+      <path d="M90 70H610V450H90V70Z"/>
+      <path d="M90 275H610"/>
+      <path d="M365 70V275"/>
+      <path d="M365 350V450"/>
+      <path d="M500 275V450"/>
+      <path d="M90 180H365"/>
+    </g>
+
+    <!-- Wall thickness -->
+    <g class="plan-heavy">
+      <path d="M90 70H610V450H90V70Z"/>
+      <path d="M90 275H610"/>
+      <path d="M365 70V275"/>
+    </g>
+
+    <!-- Windows -->
+    <g class="plan-windows">
+      <path d="M165 70V70"/>
+      <path d="M205 70V70"/>
+      <path d="M430 70V70"/>
+      <path d="M480 450V450"/>
+      <path d="M610 145V205"/>
+      <path d="M90 325V390"/>
+    </g>
+
+    <!-- Doors -->
+    <g class="plan-doors">
+      <!-- Living room door -->
+      <path d="M365 275A70 70 0 0 1 435 345"/>
+      <path d="M365 275H435"/>
+
+      <!-- Bedroom door -->
+      <path d="M500 275A65 65 0 0 0 565 340"/>
+      <path d="M500 275V340"/>
+
+      <!-- Entrance door -->
+      <path d="M365 450A70 70 0 0 0 435 380"/>
+      <path d="M365 450H435"/>
+    </g>
+
+    <!-- Furniture -->
+    <g class="plan-furniture">
+
+      <!-- Living sofa -->
+      <rect x="130" y="115" width="145" height="48" rx="3"/>
+      <line x1="145" y1="115" x2="145" y2="163"/>
+      <line x1="260" y1="115" x2="260" y2="163"/>
+
+      <!-- Coffee table -->
+      <rect x="165" y="195" width="80" height="42" rx="20"/>
+
+      <!-- Kitchen -->
+      <rect x="400" y="105" width="155" height="45" rx="2"/>
+      <circle cx="435" cy="128" r="9"/>
+      <circle cx="470" cy="128" r="9"/>
+      <circle cx="520" cy="128" r="9"/>
+
+      <!-- Dining table -->
+      <rect x="420" y="190" width="100" height="48" rx="24"/>
+      <circle cx="405" cy="214" r="8"/>
+      <circle cx="535" cy="214" r="8"/>
+
+      <!-- Bedroom bed -->
+      <rect x="120" y="320" width="150" height="90" rx="3"/>
+      <line x1="120" y1="350" x2="270" y2="350"/>
+      <rect x="135" y="330" width="48" height="18" rx="2"/>
+      <rect x="207" y="330" width="48" height="18" rx="2"/>
+
+      <!-- Desk -->
+      <rect x="300" y="330" width="50" height="95"/>
+      <circle cx="325" cy="440" r="15"/>
+
+      <!-- Bedroom 2 bed -->
+      <rect x="520" y="320" width="65" height="95" rx="3"/>
+      <line x1="520" y1="350" x2="585" y2="350"/>
+    </g>
+
+    <!-- Room labels -->
+    <g class="plan-labels">
+      <text x="155" y="95">LIVING ROOM</text>
+      <text x="425" y="95">KITCHEN</text>
+      <text x="425" y="172">DINING</text>
+      <text x="145" y="305">BEDROOM</text>
+      <text x="525" y="305">STUDY</text>
+      <text x="290" y="305">HALL</text>
+    </g>
+
+    <!-- Dimension lines -->
+    <g class="plan-dimensions">
+
+      <line x1="90" y1="40" x2="610" y2="40"/>
+      <line x1="90" y1="32" x2="90" y2="48"/>
+      <line x1="610" y1="32" x2="610" y2="48"/>
+
+      <text x="310" y="30">12.40 m</text>
+
+      <line x1="55" y1="70" x2="55" y2="450"/>
+      <line x1="47" y1="70" x2="63" y2="70"/>
+      <line x1="47" y1="450" x2="63" y2="450"/>
+
+      <text x="43" y="275" transform="rotate(-90 43 275)">9.10 m</text>
+
+    </g>
+
+    <!-- Measurement markers -->
+    <g class="plan-markers">
+      <circle cx="365" cy="275" r="5"/>
+      <circle cx="500" cy="275" r="5"/>
+      <circle cx="365" cy="350" r="5"/>
+    </g>
+
+    <!-- Animated route -->
+    <path class="plan-route" d="M115 420 C180 420 180 290 300 290 C390 290 390 245 470 245 C550 245 550 185 590 185"/>
+
+    <!-- Cursor / active point -->
+    <circle class="plan-cursor" cx="115" cy="420" r="5"/>
+
+    <!-- Technical annotation -->
+    <g class="plan-note">
+      <line x1="555" y1="410" x2="640" y2="410"/>
+      <line x1="640" y1="410" x2="640" y2="380"/>
+      <text x="555" y="430">AREA 112.8 m²</text>
+    </g>
+
+  </svg>
+
+  <div class="shot-caption">
+    <span>FIG. 03 — FLOOR PLAN</span>
+    <span>ARCHITECT DESKTOP</span>
   </div>
-</section>
+</div>
+
+    </div>
+  </section>
+
+
+  <!-- FEATURES -->
+
+  <section id="features">
+    <div class="wrap">
+
+      <div class="dim">
+        <span class="dim-label">FIG. 03 — SPECIFICATIONS</span>
+      </div>
+
+      <div class="section-head">
+
+        <h2>Built for architectural measurement.</h2>
+
+        <p>
+          Architect Desktop puts common architectural calculation tasks directly
+          inside 3ds Max, helping you extract useful project data without
+          repeatedly measuring the model by hand.
+        </p>
+
+      </div>
+
+
+      <div class="feature-list">
+
+        <article class="feature">
+          <span class="idx">01</span>
+
+          <div>
+            <h3>Room Perimeter</h3>
+
+            <p>
+              Calculate the perimeter of rooms and spaces directly from your
+              architectural geometry for faster finishing and quantity calculations.
+            </p>
+          </div>
+        </article>
+
+
+        <article class="feature">
+          <span class="idx">02</span>
+
+          <div>
+            <h3>Floor Area</h3>
+
+            <p>
+              Quickly calculate floor area from your model for room schedules,
+              architectural documentation and project estimates.
+            </p>
+          </div>
+        </article>
+
+
+        <article class="feature">
+          <span class="idx">03</span>
+
+          <div>
+            <h3>Façade Area</h3>
+
+            <p>
+              Measure façade surfaces from the 3D model to simplify architectural
+              quantity takeoffs and surface calculations.
+            </p>
+          </div>
+        </article>
+
+
+        <article class="feature">
+          <span class="idx">04</span>
+
+          <div>
+            <h3>Glazing Area</h3>
+
+            <p>
+              Calculate window and glazing areas from selected geometry for
+              faster façade studies and architectural documentation.
+            </p>
+          </div>
+        </article>
+
+
+        <article class="feature">
+          <span class="idx">05</span>
+
+          <div>
+            <h3>Direct 3ds Max Workflow</h3>
+
+            <p>
+              No need to move measurements into a separate application.
+              Architect Desktop works directly with the geometry already in your scene.
+            </p>
+          </div>
+        </article>
+
+
+        <article class="feature">
+          <span class="idx">06</span>
+
+          <div>
+            <h3>Made for Architects</h3>
+
+            <p>
+              A focused toolkit for architects, interior designers and 3D
+              visualization artists who need practical measurements from their models.
+            </p>
+          </div>
+        </article>
+
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- TECHNICAL INFO -->
+
+  <section>
+    <div class="wrap">
+
+      <div class="dim">
+        <span class="dim-label">FIG. 04 — TECHNICAL DATA</span>
+      </div>
+
+      <div class="technical">
+
+        <div class="tech-copy">
+
+          <span class="eyebrow">// ARCHITECTURAL TOOLKIT</span>
+
+          <h2>Less measuring.<br>More designing.</h2>
+
+          <p>
+            Architectural models contain a large amount of useful information.
+            Architect Desktop helps turn that geometry into practical measurements
+            without breaking your workflow.
+          </p>
+
+        </div>
+
+
+        <div class="tech-specs">
+
+          <div class="spec">
+            <span class="spec-label">SOFTWARE</span>
+            <strong>Autodesk 3ds Max</strong>
+          </div>
+
+          <div class="spec">
+            <span class="spec-label">TYPE</span>
+            <strong>MaxScript Plugin</strong>
+          </div>
+
+          <div class="spec">
+            <span class="spec-label">VERSION</span>
+            <strong>v2.00</strong>
+          </div>
+
+          <div class="spec">
+            <span class="spec-label">CATEGORY</span>
+            <strong>Architecture Tools</strong>
+          </div>
+
+          <div class="spec">
+            <span class="spec-label">MEASUREMENT</span>
+            <strong>Area &amp; Perimeter</strong>
+          </div>
+
+          <div class="spec">
+            <span class="spec-label">WORKFLOW</span>
+            <strong>Inside 3ds Max</strong>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- WORKFLOW -->
+
+  <section>
+    <div class="wrap">
+
+      <div class="dim">
+        <span class="dim-label">FIG. 05 — WORKFLOW</span>
+      </div>
+
+      <div class="section-head">
+
+        <h2>From model to measurement.</h2>
+
+        <p>
+          Keep your architectural calculations close to your 3D model and
+          reduce repetitive manual measurement during project development.
+        </p>
+
+      </div>
+
+
+      <div class="grid-3">
+
+        <article class="card">
+
+          <span class="num">STEP / 01</span>
+
+          <h3>Select</h3>
+
+          <p>
+            Select the geometry or architectural elements you want to measure
+            inside your 3ds Max scene.
+          </p>
+
+          <span class="status">● INPUT — 3D MODEL</span>
+
+        </article>
+
+
+        <article class="card">
+
+          <span class="num">STEP / 02</span>
+
+          <h3>Calculate</h3>
+
+          <p>
+            Run the required Architect Desktop calculation and let the plugin
+            extract the measurement from your model.
+          </p>
+
+          <span class="status">● PROCESS — MAXSCRIPT</span>
+
+        </article>
+
+
+        <article class="card">
+
+          <span class="num">STEP / 03</span>
+
+          <h3>Use</h3>
+
+          <p>
+            Use the resulting dimensions and areas in your architectural
+            documentation, estimates or client presentations.
+          </p>
+
+          <span class="status">● OUTPUT — READY</span>
+
+        </article>
+
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- TUTORIAL -->
+
+  <section>
+    <div class="wrap">
+
+      <div class="dim">
+        <span class="dim-label">FIG. 06 — TUTORIAL</span>
+      </div>
+
+      <div class="section-head">
+
+        <h2>See it in use.</h2>
+
+        <p>
+          Watch the Architect Desktop workflow and see how architectural
+          measurements can be extracted directly from a 3ds Max scene.
+        </p>
+
+      </div>
+
+
+      <div class="grid-2">
+
+        <!-- Replace YOUR_VIDEO_ID with the real YouTube video ID -->
+
+        <a href="https://www.youtube.com/watch?v=YOUR_VIDEO_ID" class="video-card" target="_blank" rel="noopener noreferrer" aria-label="Watch Architect Desktop tutorial on YouTube">
+
+          <div class="video-thumb">
+
+            <img src="https://img.youtube.com/vi/YOUR_VIDEO_ID/hqdefault.jpg" width="480" height="360" alt="Architect Desktop 3ds Max plugin tutorial" loading="lazy">
+
+            <div class="video-play" aria-hidden="true">
+
+              <svg viewBox="0 0 68 48">
+                <path d="M66.5 7.7c-.8-2.9-2.5-5.1-5.4-5.9C55.8 0 34 0 34 0S12.2 0 6.9 1.8C4 2.6 2.3 4.8 1.5 7.7 0 13 0 24 0 24s0 11 1.5 16.3c.8 2.9 2.5 5.1 5.4 5.9C12.2 48 34 48 34 48s21.8 0 27.1-1.8c2.9-.8 4.6-3 5.4-5.9C68 35 68 24 68 24s0-11-1.5-16.3z" fill="#c17845"/>
+                <path d="M45 24 27 14v20z" fill="#fff"/>
+              </svg>
+
+            </div>
+
+          </div>
+
+
+          <div class="video-body">
+
+            <h3>Architect Desktop — 3ds Max measurement workflow</h3>
+
+            <div class="video-meta">
+              <span class="src">OFFICIAL — CGSAMPLE</span>
+              <span class="watch">Watch ↗</span>
+            </div>
+
+          </div>
+
+        </a>
+
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- CTA -->
+
+  <section>
+    <div class="wrap">
+
+      <div class="cta-band">
+
+        <div>
+
+          <h2>Get Architect Desktop.</h2>
+
+          <p>
+            The online store is temporarily unavailable.
+            For pricing, purchase or compatibility information,
+            contact CGSample directly.
+          </p>
+
+        </div>
+
+        <a href="mailto:info@cgsample.ir?subject=Buy Architect Desktop plugin" class="btn btn-primary">
+          Email CGSample
+        </a>
+
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
 
 <footer>
+
   <div class="wrap foot-row">
-    <span class="mono">ARTAKAN CO. — SHEET 04/05 — ARCHITECT DESKTOP v2</span>
+
+    <span class="mono">
+      CGSAMPLE — SHEET 04/05 — ARCHITECT DESKTOP v2
+    </span>
+
     <div class="foot-links">
+
       <a href="/">Home</a>
+      <a href="/plugin/artakan-create-stairs">Create Stairs</a>
+      <a href="/plugin/planto3d">PlanTo3D</a>
       <a href="/about">About</a>
       <a href="mailto:info@cgsample.ir">info@cgsample.ir</a>
+      <a href="https://www.instagram.com/cgsample/" target="_blank" rel="me noopener noreferrer" aria-label="CGSample Instagram">Instagram</a>
+
     </div>
+
   </div>
+
 </footer>
+
 
 </body>
 </html>
